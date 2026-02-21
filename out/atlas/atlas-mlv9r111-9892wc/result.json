@@ -1,0 +1,15 @@
+{
+  "run_id": "atlas-mlv9r111-9892wc",
+  "generated_at": "2026-02-20T19:15:04.700Z",
+  "item_count": 138,
+  "categories_count": 6,
+  "coverage": {
+    "overall_ok_rate": 0.4348,
+    "pipeline_verdict": "DEGRADED"
+  },
+  "dashboard_rel_path": "atlas-mlv9r111-9892wc",
+  "dashboard_url": "",
+  "cover_rel_path_or_url": null,
+  "cover_url": "",
+  "cover_missing": true
+}

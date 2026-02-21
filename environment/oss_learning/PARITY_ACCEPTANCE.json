@@ -1,0 +1,29 @@
+{
+  "parity": [
+    {
+      "id": "P1",
+      "name": "First-screen layout parity",
+      "must_have": ["Header", "KPI cards", "Visual panels", "Drill-down"],
+      "evidence": ["screenshot_path", "vendor_component_refs"]
+    },
+    {
+      "id": "P2",
+      "name": "Component style parity",
+      "must_have": ["card grid", "panel sections", "filter placement aligns vendor"],
+      "evidence": ["css/token refs", "component tree refs"]
+    },
+    {
+      "id": "P3",
+      "name": "Interaction parity",
+      "must_have": ["tab/panel switching aligned", "drill-down behavior aligned"],
+      "evidence": ["gif/screenshot notes", "event handlers refs"]
+    }
+  ],
+  "delta_only": [
+    {
+      "id": "D1",
+      "name": "Delta features listed explicitly",
+      "must_have": ["delta_spec.md includes 'Not in vendor' justification per item"]
+    }
+  ]
+}

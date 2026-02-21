@@ -1,0 +1,5 @@
+best_guess_atlas_root: /Users/qiangguo/atlas-radar
+confidence: found_package_json=1 found_atlas_run=1
+
+# Suggested export (copy to shell or launchd plist):
+export ATLAS_ROOT="/Users/qiangguo/atlas-radar"

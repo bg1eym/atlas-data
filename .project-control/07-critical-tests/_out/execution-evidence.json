@@ -1,0 +1,9 @@
+{
+  "timestamp": "2026-02-20T15:33:42.000Z",
+  "host_os": "probe_only",
+  "exit_code": null,
+  "stdout_truncated": "",
+  "stderr_truncated": "",
+  "cmd": "",
+  "sim_path": "/usr/bin:/bin:/usr/sbin:/sbin"
+}

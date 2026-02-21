@@ -1,0 +1,14 @@
+{
+  "task_id": "PCK-ATLAS-FINAL-001",
+  "base_version": "PCK-ATLAS-005",
+  "inherits_failure_mode": "OK",
+  "declared_fix_target": "ATLAS_ROOT reliability, ENOENT fix, result.json contract, ACTF Atlas tests",
+  "verification_strategy": "RG-ATLAS-FINAL-001, ACTF, atlas-result-guard",
+  "intent": "彻底完成 Atlas 项目 — ATLAS_ROOT 可靠性、ENOENT 根治、result.json 契约、ACTF Atlas 专用测试",
+  "structural_scope": [
+    "gates:update",
+    "tests:add",
+    "atlas:finalize"
+  ],
+  "timestamp": "2026-02-20T10:00:00.000Z"
+}

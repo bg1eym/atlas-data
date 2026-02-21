@@ -1,0 +1,5 @@
+# AI Radar Sources
+# Add URLs or structured content. Supported formats: pdf, txt, md, yaml, json
+# Example URLs:
+# https://openai.com/blog/rss.xml
+# https://techcrunch.com/feed/

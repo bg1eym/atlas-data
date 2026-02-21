@@ -1,0 +1,7 @@
+{
+  "task_id": "PCK-BOOTSTRAP-000",
+  "base_version": null,
+  "intent": "Freeze current structure before PCK enforcement",
+  "structural_scope": ["freeze-all"],
+  "timestamp": "2025-02-19T00:00:00.000Z"
+}

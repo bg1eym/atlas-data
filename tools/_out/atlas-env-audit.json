@@ -1,0 +1,24 @@
+{
+  "openclaw_plugin_installPath": "",
+  "gateway_env": {
+    "ATLAS_ROOT": "/Users/qiangguo/Projects/atlas-radar",
+    "ATLAS_DASHBOARD_URL_BASE": "https://your-domain/atlas/{{run_id}}/",
+    "ATLAS_COVER_URL_BASE": "https://your-domain/atlas/{{run_id}}/cover.png"
+  },
+  "atlas_root_validation": {
+    "path_exists": false,
+    "has_package_json": false,
+    "has_script_atlas_run": false
+  },
+  "discovery": {
+    "candidates": [
+      "/Users/qiangguo/atlas-radar"
+    ],
+    "recommended_root": "/Users/qiangguo/atlas-radar"
+  },
+  "conclusion": {
+    "root_cause": "ATLAS_ROOT_INVALID",
+    "next_fix": "/usr/libexec/PlistBuddy -c \"Set :ATLAS_ROOT /Users/qiangguo/atlas-radar\" /Users/qiangguo/Library/LaunchAgents/ai.openclaw.gateway.plist"
+  },
+  "plist_path": "/Users/qiangguo/Library/LaunchAgents/ai.openclaw.gateway.plist"
+}

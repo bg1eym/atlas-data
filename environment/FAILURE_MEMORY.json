@@ -1,0 +1,225 @@
+{
+  "version": "1.0",
+  "entries": [
+    {
+      "id": "BUG-1",
+      "title": "Source Health click opens wrong drilldown (shows category window, not that source)",
+      "symptom": "Clicking any Source Health card opens the SAME drilldown content (classification window), not filtered by that specific source.",
+      "root_cause": "sourceIdToName mapping fails: coverage has source_id (e.g. techcrunch-social-phenomenon-6) but items use source_name (TechCrunch). ItemsDrilldown filters by source_name; wrong value passed.",
+      "trigger": "User clicks Source Health card",
+      "fix": "Add source_name to coverage in atlas-fetch; pass source_name to onSourceClick; ItemsDrilldown filters by source_name.",
+      "prevention_gate": "Drilldown Integrity Gate: clicking Source A opens drilldown where all items source_id==A",
+      "files_touched": ["skills/atlas-fetch/src/index.ts", "skills/atlas-fetch/src/types.ts", "ui/atlas-viewer/src/Dashboard/SourceHealthPanel.svelte", "ui/atlas-viewer/src/Dashboard/DashboardView.svelte"]
+    },
+    {
+      "id": "BUG-2",
+      "title": "Radar Categories panel shows unnamed white button bar; clicking opens Civilization items (wrong place)",
+      "symptom": "Radar Categories has a white button strip with no label; clicking opens Civilization Items modal, and tags incomplete.",
+      "root_cause": "Radar panel's drilldown button triggers civDrilldownOpen (Civilization drilldown) instead of radar-category ItemsDrilldown. Button lacks clear label.",
+      "trigger": "User clicks Radar Categories View items button",
+      "fix": "Radar Categories View items opens ItemsDrilldown filtered by radar_category; Civilization drilldown only from Civilization panel. Add label 'Radar: {category}' to button.",
+      "prevention_gate": "Drilldown Integrity Gate: clicking RadarCategory X opens items with radar_category==X; civilization drilldown only from Civilization panel",
+      "files_touched": ["ui/atlas-viewer/src/Dashboard/RadarCategoriesPanel.svelte", "ui/atlas-viewer/src/Dashboard/DashboardView.svelte"]
+    },
+    {
+      "id": "BUG-3",
+      "title": "Sources/KOL list not sorted; not clickable",
+      "symptom": "Sources and KOL lists are static chips with no sort or click.",
+      "root_cause": "SourcesKolPanel renders span chips; no sort UI or onclick handlers.",
+      "trigger": "User views Sources & KOL panel",
+      "fix": "Add sort controls (by kind, status, item_count); make each row/card clickable; click opens drilldown filtered by that source/KOL.",
+      "prevention_gate": "Drilldown Integrity Gate: clicking KOL opens drilldown with header indicating selected source/KOL",
+      "files_touched": ["ui/atlas-viewer/src/Dashboard/SourcesKolPanel.svelte", "ui/atlas-viewer/src/Dashboard/DashboardView.svelte"]
+    },
+    {
+      "id": "BUG-4",
+      "title": "No summaries / no Chinese summaries in drilldown cards",
+      "symptom": "Item cards show only summary or only summary_zh; not both.",
+      "root_cause": "ItemCard uses summary only; CivItemCard uses summary_zh only. Pipeline may not produce summary_zh.",
+      "trigger": "User views drilldown item cards",
+      "fix": "Both cards show summary_en and summary_zh; add summary_zh to classify pipeline; show MISSING summary_zh badge when absent.",
+      "prevention_gate": "Summary Gate: first N=50 items have summary_en and summary_zh non-empty",
+      "files_touched": ["ui/atlas-viewer/src/Dashboard/ItemCard.svelte", "ui/atlas-viewer/src/Dashboard/CivItemCard.svelte", "runtime/atlas/civilization/classify.ts"]
+    },
+    {
+      "id": "BUG-5",
+      "title": "Classification is chaotic / civ tags incomplete",
+      "symptom": "civ_tag not from taxonomy; radar_category guessed not from PDF.",
+      "root_cause": "Classify step may use partial tag set; radar_category not strictly from PDF taxonomy.",
+      "trigger": "Pipeline classification output",
+      "fix": "civ_tag from defined taxonomy only; radar_category from PDF taxonomy; output classification_distribution.json.",
+      "prevention_gate": "classification_distribution.json with counts_by_radar_category, counts_by_civ_tag; gate thresholds pass",
+      "files_touched": ["runtime/atlas/civilization/classify.ts", "runtime/atlas/civilization/index.ts"]
+    },
+    {
+      "id": "FETCH-OBS-ROUTING",
+      "title": "Coverage records missing normalized failure bucket",
+      "symptom": "Source coverage shows generic failures without actionable bucket or reason.",
+      "root_cause": "Fetch pipeline writes status only, does not classify into timeout/tls/dns/http_4xx/http_5xx/blocked etc.",
+      "trigger": "Any fetch failure path",
+      "fix": "Always emit coverage bucket + reason for non-ok, and aggregate run-level coverage_stats.json.",
+      "prevention_gate": "fetch_health_gate.sh validates coverage_stats.json and failure buckets are present",
+      "files_touched": ["skills/atlas-fetch/src/index.ts", "scripts/fetch_health_gate.sh"]
+    },
+    {
+      "id": "UI-SORT-REGRESSION",
+      "title": "Sources panel sorted by ok/item_count only",
+      "symptom": "High-value editorial sources disappear in ordering when temporarily failing.",
+      "root_cause": "UI sorting tied to item_count/status without editorial priority and freshness dimensions.",
+      "trigger": "Sources & KOL panel render",
+      "fix": "Sort sources by editorial_weight DESC, then freshness DESC, then ok_rate DESC.",
+      "prevention_gate": "UI contract snapshot verifies ordering keys include editorial_weight",
+      "files_touched": ["ui/atlas-viewer/src/Dashboard/SourcesKolPanel.svelte"]
+    },
+    {
+      "id": "KOL-X-SILENT-DROP",
+      "title": "KOL X sources silently disappear when adapter unavailable",
+      "symptom": "KOL rows are missing rather than clearly marked blocked.",
+      "root_cause": "No explicit x adapter status path; failures collapse into generic/missing UI data.",
+      "trigger": "x adapter selected without credentials/config",
+      "fix": "Emit blocked coverage with reason 'X adapter not configured; use rss/blog/github fallback', keep KOL rows visible with fallback links.",
+      "prevention_gate": "fetch_health_gate and UI panel show blocked KOL entries",
+      "files_touched": ["skills/atlas-fetch/src/index.ts", "ui/atlas-viewer/src/Dashboard/SourcesKolPanel.svelte"]
+    },
+    {
+      "id": "ADD-SOURCE-NO-AUDIT",
+      "title": "Source override changed without append-only audit trail",
+      "symptom": "New source appears in runtime config but no trace of who/when changed it.",
+      "root_cause": "Manual edits to config bypass controlled override + changeset logging.",
+      "trigger": "Adding or updating source outside CLI workflow",
+      "fix": "Use radar:add-source CLI to validate, write environment/sources_overrides.json and append out/radar_sources/changeset.jsonl.",
+      "prevention_gate": "changeset.jsonl line emitted per override update",
+      "files_touched": ["scripts/radar_add_source.ts", "runtime/radar/source_overrides.ts", "scripts/generate_sources_config.ts"]
+    },
+    {
+      "id": "TG-NL-UNKNOWN",
+      "title": "NL message treated as unknown",
+      "symptom": "Telegram natural-language request does not trigger atlas pipeline and only returns fallback text.",
+      "root_cause": "NL router missing deterministic trigger mapping for required Chinese phrases.",
+      "trigger": "User sends '今天的文明态势雷达' or equivalent NL query",
+      "fix": "Add rule-based NL router with explicit trigger list and slash-command compatibility.",
+      "prevention_gate": "scripts/nl_router_sanity.sh",
+      "files_touched": ["runtime/atlas/tg_nl_router.ts", "runtime/atlas/tg_nl_handler.ts"]
+    },
+    {
+      "id": "TG-NL-MISSING-BINARY",
+      "title": "Atlas not invoked; bot tried to run missing binary",
+      "symptom": "TG flow fails with executable-not-found style error instead of invoking existing atlas pipeline code path.",
+      "root_cause": "Command routing attempted to shell non-existent atlas executable rather than internal run function.",
+      "trigger": "NL or slash atlas run request from TG",
+      "fix": "Route TG intent to runAtlasPipeline() and keep a single in-repo invocation path.",
+      "prevention_gate": "scripts/acceptance_atlas_tg_nl_e2e.sh",
+      "files_touched": ["runtime/atlas/tg_nl_handler.ts", "runtime/atlas/run_atlas.ts"]
+    },
+    {
+      "id": "TG-CARD-URL-PLACEHOLDER",
+      "title": "Cover card missing dashboard URL",
+      "symptom": "tg_cover_card_zh.txt keeps {{DASHBOARD_URL}} placeholder and user cannot open dashboard.",
+      "root_cause": "Cover card artifact generated without runtime URL materialization before TG send.",
+      "trigger": "TG delivery after atlas run",
+      "fix": "Materialize dashboard URL using DASHBOARD_URL_BASE + run_id before send and persist updated cover card.",
+      "prevention_gate": "scripts/tg_cover_card_sanity.sh + scripts/acceptance_atlas_tg_nl_e2e.sh",
+      "files_touched": ["runtime/atlas/tg_cover_card.ts", "runtime/atlas/tg_send_readback.ts"]
+    },
+    {
+      "id": "TG-RENDERED-PREVIEW-LEAK",
+      "title": "Rendered TG preview mistakenly sent",
+      "symptom": "Bot sends long rendered_text preview instead of concise Chinese cover card with dashboard link.",
+      "root_cause": "TG sender used rendered_text.txt directly.",
+      "trigger": "Any TG atlas delivery path",
+      "fix": "Use tg_cover_card_zh.txt as canonical TG payload and keep rendered_text only as local artifact.",
+      "prevention_gate": "scripts/acceptance_atlas_tg_nl_e2e.sh",
+      "files_touched": ["runtime/atlas/tg_send_readback.ts", "runtime/atlas/tg_nl_handler.ts"]
+    },
+    {
+      "id": "BUG-UI-1",
+      "title": "Wrong source drilldown mapping",
+      "symptom": "Clicking Source Health card opens global/unrelated items instead of clicked source.",
+      "root_cause": "Drilldown filtered by source_name while click payload used source_id-like token; mapping was lossy.",
+      "trigger": "Click any source in Source Health / Sources panel",
+      "fix": "Use source_id as drilldown key, include source_id in normalized items, and keep sourceLabel map for display.",
+      "prevention_gate": "scripts/drilldown_integrity_gate.sh",
+      "files_touched": ["ui/atlas-viewer/src/Dashboard/DashboardView.svelte", "ui/atlas-viewer/src/Dashboard/ItemsDrilldown.svelte", "skills/atlas-fetch/src/adapters/rss.ts", "skills/atlas-fetch/src/adapters/html.ts", "skills/atlas-fetch/src/adapters/github.ts"]
+    },
+    {
+      "id": "BUG-UI-2",
+      "title": "Radar categories white unnamed bar",
+      "symptom": "Unnamed white bar appears, unclear interactive target.",
+      "root_cause": "Category actions were not explicitly labeled row controls.",
+      "trigger": "View radar category section",
+      "fix": "Every category row is an explicit clickable labeled button/chip with count.",
+      "prevention_gate": "scripts/ui_contract_test.sh",
+      "files_touched": ["ui/atlas-viewer/src/Dashboard/RadarCategoriesPanel.svelte"]
+    },
+    {
+      "id": "BUG-UI-3",
+      "title": "Wrong modal target for radar click",
+      "symptom": "Radar category click opened wrong modal path in prior versions.",
+      "root_cause": "Shared drilldown wiring mixed radar and civilization targets.",
+      "trigger": "Click radar category",
+      "fix": "Radar category always opens Radar Items drilldown; Civilization drilldown only from Civilization panel.",
+      "prevention_gate": "scripts/drilldown_integrity_gate.sh",
+      "files_touched": ["ui/atlas-viewer/src/Dashboard/DashboardView.svelte", "ui/atlas-viewer/src/Dashboard/RadarCategoriesPanel.svelte"]
+    },
+    {
+      "id": "BUG-UI-4",
+      "title": "UNKNOWN verdict is confusing",
+      "symptom": "Run list/header displays UNKNOWN without actionable meaning.",
+      "root_cause": "No fallback verdict mapping from coverage/availability to semantic status.",
+      "trigger": "Browse runs with missing acceptance verdict",
+      "fix": "Map to OK/DEGRADED/BLOCKED using coverage thresholds and add tooltip explanation.",
+      "prevention_gate": "scripts/ui_smoke_test.sh",
+      "files_touched": ["ui/atlas-viewer/vite.config.ts", "ui/atlas-viewer/src/RunBrowser.svelte", "ui/atlas-viewer/src/Dashboard/Header.svelte"]
+    },
+    {
+      "id": "BUG-TG-001",
+      "title": "TG shows BLOCKED but no reason/instructions",
+      "symptom": "Send /atlas run in TG when TELEGRAM_BOT_TOKEN/CHAT_ID not configured -> bot replies generic error without reason.",
+      "root_cause": "Missing env or routing failure is silent; no delivery_verdict, delivery_reason, or how-to-fix in reply.",
+      "trigger": "Send /atlas run in TG without credentials",
+      "fix": "Reply must include delivery_verdict + delivery_reason + how-to-fix (which env vars + where to set).",
+      "prevention_gate": "scripts/acceptance_atlas_tg_nl_e2e.sh",
+      "files_touched": ["runtime/atlas/tg_nl_handler.ts", "scripts/acceptance_atlas_tg_nl_e2e.sh"]
+    },
+    {
+      "id": "BUG-TG-002",
+      "title": "Slash commands executed as external binaries",
+      "symptom": "TG send /atlas run => bot replies executable missing.",
+      "root_cause": "Command routing attempted to shell non-existent atlas executable rather than internal handler.",
+      "trigger": "TG send /atlas run or /radar schedule test",
+      "fix": "Route slash commands through internal tg_nl_handler/router (no external exec).",
+      "prevention_gate": "scripts/tg_slash_router_sanity.sh",
+      "files_touched": ["runtime/atlas/tg_nl_handler.ts", "runtime/atlas/tg_nl_router.ts"]
+    },
+    {
+      "id": "BUG-SUM-001",
+      "title": "summary_zh is present but empty string",
+      "symptom": "run atlas pipeline -> items_normalized.json items[0].summary_zh == \"\" for many items.",
+      "root_cause": "atlas-fetch writes summary_zh: \"\" when ATLAS_SKIP_TRANSLATE or translation fails.",
+      "trigger": "Pipeline run with skip translate or failed translation",
+      "fix": "summary_zh must be non-empty for first N items (gateable); use placeholder when fallback.",
+      "prevention_gate": "scripts/summary_gate.sh",
+      "files_touched": ["skills/atlas-fetch/src/index.ts", "runtime/atlas/civilization/classify.ts", "scripts/summary_gate.sh"]
+    },
+    {
+      "id": "BUG-UI-001",
+      "title": "UI must show MISSING summary_zh when empty",
+      "symptom": "Open any run -> item card shows only English summary; zh area blank.",
+      "root_cause": "Item card does not explicitly show placeholder when summary_zh is empty string.",
+      "trigger": "View item card with empty summary_zh",
+      "fix": "Card shows placeholder + counted by Summary Gate.",
+      "prevention_gate": "scripts/summary_gate.sh",
+      "files_touched": ["ui/atlas-viewer/src/Dashboard/ItemCard.svelte", "ui/atlas-viewer/src/Dashboard/CivItemCard.svelte"]
+    },
+    {
+      "id": "BUG-UI-5",
+      "title": "Blocked run lacks debug visibility",
+      "symptom": "Blocked runs show 0 items with no reason/input-pack/fetch context.",
+      "root_cause": "Dashboard did not load gate summaries and top failed sources into a visible panel.",
+      "trigger": "Open blocked run in dashboard",
+      "fix": "Add Blocked Debug panel showing audit reason, input_pack_gate summary, fetch health, and top_failed_sources.",
+      "prevention_gate": "scripts/input_pack_gate.sh + scripts/fetch_health_gate.sh",
+      "files_touched": ["ui/atlas-viewer/src/Dashboard/DashboardView.svelte"]
+    }
+  ]
+}

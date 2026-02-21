@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "version": "1.0",
+  "description": "统一能力词表。skills 声明能力时需映射到此 taxonomy。",
+  "capabilities": [
+    {"id": "web.search", "description": "Web 搜索", "constraints": {"external_network": true}},
+    {"id": "web.fetch", "description": "HTTP 拉取", "constraints": {"external_network": true}},
+    {"id": "pdf.generate", "description": "PDF 生成", "constraints": {"destructive": false}},
+    {"id": "telegram.send", "description": "Telegram 发送", "constraints": {"requires_credentials": true, "external_network": true}},
+    {"id": "telegram.readback", "description": "Telegram 读回", "constraints": {"requires_credentials": true, "external_network": true}},
+    {"id": "notes.write", "description": "笔记写入", "constraints": {"destructive": false}},
+    {"id": "reminders.write", "description": "提醒写入", "constraints": {"destructive": false}},
+    {"id": "filesystem.read", "description": "文件系统读", "constraints": {"destructive": false}},
+    {"id": "filesystem.write", "description": "文件系统写", "constraints": {"destructive": true, "pii_risk_level": "low"}},
+    {"id": "shell.exec", "description": "Shell 执行", "constraints": {"destructive": true, "pii_risk_level": "high"}}
+  ]
+}

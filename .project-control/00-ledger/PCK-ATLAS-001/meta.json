@@ -1,0 +1,10 @@
+{
+  "task_id": "PCK-ATLAS-001",
+  "base_version": "PCK-BOOTSTRAP-000",
+  "inherits_failure_mode": "OK",
+  "declared_fix_target": "Atlas/Radar decoupling, TG help/NL routing",
+  "verification_strategy": "RG-ATLAS-001",
+  "intent": "Atlas/Radar decoupling: remove radar references from TG help/NL/routing; ensure /atlas today returns dashboardUrl+coverUrl+runId",
+  "structural_scope": ["atlas:tg-fix", "contract:update", "wiring:update"],
+  "timestamp": "2025-02-19T12:00:00.000Z"
+}

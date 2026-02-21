@@ -1,0 +1,16 @@
+{
+  "version": "1.0",
+  "_comment": "Copy to FAILURE_MEMORY.json and update. This example documents the BUG-1 to BUG-5 entries.",
+  "entries": [
+    {
+      "id": "BUG-1",
+      "title": "Source Health click opens wrong drilldown (shows category window, not that source)",
+      "symptom": "Clicking any Source Health card opens the SAME drilldown content (classification window), not filtered by that specific source.",
+      "root_cause": "sourceIdToName mapping fails: coverage has source_id but items use source_name. Wrong value passed to ItemsDrilldown.",
+      "trigger": "User clicks Source Health card",
+      "fix": "Add source_name to coverage; pass source_name to onSourceClick.",
+      "prevention_gate": "Drilldown Integrity Gate",
+      "files_touched": ["skills/atlas-fetch/src/index.ts", "ui/atlas-viewer/src/Dashboard/SourceHealthPanel.svelte"]
+    }
+  ]
+}

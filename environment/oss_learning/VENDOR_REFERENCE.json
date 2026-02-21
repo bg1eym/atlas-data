@@ -1,0 +1,17 @@
+{
+  "vendor_root": "vendor/<name>/",
+  "must_collect": {
+    "ui_entrypoints": ["index.html", "src/main.*", "src/App.*"],
+    "routing": ["router", "routes", "pages"],
+    "layout_components": ["Header", "Sidebar", "Panels", "Cards"],
+    "state_and_dataflow": ["stores", "context", "api layer"],
+    "styling": ["css vars", "theme tokens", "tailwind config", "global styles"]
+  },
+  "parity_dimensions": [
+    "Layout (first screen)",
+    "Information Architecture",
+    "Component style (cards, chips, panels)",
+    "Interaction (filters, tabs, drill-down)",
+    "Density control (paging, truncation, progressive disclosure)"
+  ]
+}

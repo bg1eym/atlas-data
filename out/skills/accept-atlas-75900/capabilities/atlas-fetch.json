@@ -1,0 +1,21 @@
+{
+  "skill_id": "atlas-fetch",
+  "capabilities": [
+    "web.fetch"
+  ],
+  "claimed_tools": [
+    "cli"
+  ],
+  "requires_env": [],
+  "risk_flags": [
+    "external_network"
+  ],
+  "network_domains": [
+    "anthropic.com",
+    "github.com",
+    "openai.com"
+  ],
+  "evidence_refs": [
+    "SKILL.md"
+  ]
+}

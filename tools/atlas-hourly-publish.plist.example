@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>atlas-hourly-publish</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>/bin/bash</string>
+    <string>/path/to/atlas-radar/tools/atlas-hourly-publish.sh</string>
+  </array>
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>ATLAS_ROOT</key>
+    <string>/path/to/atlas-radar</string>
+    <key>ATLAS_DATA_REPO</key>
+    <string>/path/to/atlas-data</string>
+  </dict>
+  <key>StartInterval</key>
+  <integer>3600</integer>
+  <key>RunAtLoad</key>
+  <false/>
+  <key>StandardOutPath</key>
+  <string>/tmp/atlas-hourly-publish.log</string>
+  <key>StandardErrorPath</key>
+  <string>/tmp/atlas-hourly-publish.err</string>
+</dict>
+</plist>

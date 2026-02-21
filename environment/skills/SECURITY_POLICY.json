@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "version": "1.0",
+  "description": "Skills 可接受风险边界。装之前必须过 security review。",
+  "allowed_license": ["MIT", "Apache-2.0", "BSD-2-Clause", "BSD-3-Clause", "ISC"],
+  "forbidden_license": ["GPL-2.0", "GPL-3.0", "AGPL-3.0", "AGPL-1.0"],
+  "require_pinned_revision": true,
+  "require_no_postinstall_scripts": true,
+  "require_sbom": {"enabled": true, "format": "cyclonedx"},
+  "forbidden_capabilities": ["credential_exfiltration", "browser_cookie_theft", "filesystem_wipe", "shell_unbounded"],
+  "allowed_network_domains_policy": {"deny_by_default": true, "allowlist": ["api.telegram.org", "api.github.com", "raw.githubusercontent.com", "registry.npmjs.org"]},
+  "data_handling": {"no_secrets_in_logs": true, "redact_patterns": ["sk-", "TELEGRAM_BOT_TOKEN", "TELEGRAM_CHAT_ID", "GITHUB_TOKEN", "GH_TOKEN", "API_KEY", "SECRET"]},
+  "review_levels": {"L0": "docs only + manifest parse", "L1": "static scan + dependency + install dry checks", "L2": "smoke in sandbox + network allowlist enforcement"}
+}

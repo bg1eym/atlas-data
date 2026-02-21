@@ -1,0 +1,65 @@
+{
+  "version": "2.0.0",
+  "mode": "STRICT",
+  "immutable": true,
+  "require_full_pipeline": true,
+  "require_provenance_chain": true,
+  "require_tg_readback_layout": true,
+  "require_audit_logs": true,
+  "require_render_manifest": true,
+  "enforcement_mode": "STRICT",
+  "forbidden_env_prefixes": ["MOCK", "DRY", "PREVIEW", "FAKE", "STUB"],
+  "forbidden_env_exact": ["RADAR_MOCK", "RADAR_DRY_RUN", "RADAR_PREVIEW", "RADAR_SKIP_CORE", "TG_MOCK", "TG_DRYRUN", "RADAR_DRYRUN"],
+  "require_real_tg_for_pass": true,
+  "require_schedule_in_same_run": true,
+  "require_render_called": true,
+  "require_send_called": true,
+  "require_readback_called": true,
+  "layout_input_source_required": "TG_READBACK",
+  "exit_codes": {"BLOCKED": 42, "FAIL": 1, "PASS": 0},
+  "evidence_root_dir": "out/evidence",
+  "evidence_kind": "prod_layout",
+  "freshness_window_seconds": 300,
+  "forbid_placeholder_sources": ["Example", "example.com"],
+  "anti_cheat": {
+    "max_single_item_placeholder": true,
+    "forbidden_domains": ["example.com"],
+    "forbidden_title_keywords": ["Example"],
+    "require_item_count_consistency": true,
+    "require_pipeline_run_id_match": true,
+    "require_evidence_freshness": true
+  },
+  "render_manifest_required_fields": ["pipeline_run_id", "render_input_sha256", "render_output_sha256", "render_git_hash", "render_timestamp"],
+  "required_provenance_fields": ["pipeline_output_sha256", "render_input_sha256", "rendered_text_sha256"],
+  "required_audit_files": ["acceptance.log", "commands.log", "decisions.jsonl", "summary.json"],
+  "ledger_paths": {
+    "iteration_ledger": "environment/ITERATION_LEDGER.json",
+    "failure_memory": "environment/FAILURE_MEMORY.json"
+  },
+  "AGENTS": {
+    "orchestrator": true,
+    "fetcher": true,
+    "filter_rank": true,
+    "renderer": true,
+    "sender": true,
+    "verifier": true
+  },
+  "ROLE_CONTRACTS": {
+    "renderer": {"must_output": ["rendered_text.txt", "render_meta.json"], "must_not_output": [], "must_not_call": ["send", "tg", "sendMessage"]},
+    "sender": {"must_output": ["sent_text.txt", "send_response_raw.json"], "must_not_output": [], "must_not_call": ["filter", "render"]},
+    "verifier": {"must_output": ["acceptance_report.json"], "must_not_output": [], "must_not_call": []}
+  },
+  "anti_bypass": {
+    "require_cross_agent_provenance": true,
+    "no_mock_dry_run": true,
+    "no_placeholder_output": true
+  },
+  "required_pipeline_steps": ["P1_FETCH", "P2_FILTER", "P3_RENDER", "P4_SEND", "P5_READBACK", "P6_VERIFY"],
+  "test_only_env_vars": ["APF_TEST_RENDER_EMPTY", "APF_TEST_SKIP_READBACK", "APF_TEST_FORCE_MINIMAL_FILTER"],
+  "BUSINESS_OBJECTIVE": "Complete feed: produce full coverage of configured AI news/KOL/official sources. No minimal gate-satisfying output. Must cover all configured sources or explicitly record reasons for gaps.",
+  "OSS_Learning": {
+    "when_vendor_exists_and_request_learns": "must_produce_vendor_parity_map_and_delta_spec",
+    "forbidden": ["ui_redesign_without_vendor_evidence", "rendered_text_on_first_screen_unless_vendor_does"],
+    "required_artifacts": ["out/oss_learning/vendor_parity_map.json", "out/oss_learning/delta_spec.md", "out/oss_learning/ui_parity_checklist.md"]
+  }
+}

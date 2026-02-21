@@ -1,0 +1,10 @@
+{
+  "task_id": "PCK-ATLAS-008",
+  "base_version": "PCK-ATLAS-006",
+  "inherits_failure_mode": "OK",
+  "declared_fix_target": "ATLAS_PIPELINE_BLOCKED → runnable pipeline or graceful degraded output",
+  "verification_strategy": "RG-ATLAS-008-*, CT-ATLAS-008-run-today-local, tools/atlas-acceptance-ATLAS-008.sh, critical-tests",
+  "intent": "Fix /atlas today end-to-end: ATLAS_ROOT discovery, exit 42 classification, PDF_EXTRACT_ALLOW_FALLBACK, degraded output with dashboard URL",
+  "structural_scope": ["atlas:executor-fix", "atlas:pipeline-fix", "diagnostics:add", "regression:add"],
+  "timestamp": "2026-02-20T18:00:00.000Z"
+}

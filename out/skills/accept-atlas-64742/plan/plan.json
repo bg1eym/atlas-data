@@ -1,0 +1,18 @@
+{
+  "capability_match_table": {
+    "web.fetch": {
+      "skill_id": "atlas-fetch",
+      "score": 100
+    }
+  },
+  "selected_skills": [
+    "atlas-fetch"
+  ],
+  "scoring_rules": {
+    "trust_level": "T0>T1>T2",
+    "security_verdict": "PASS only",
+    "least_privilege": "minimize permissions",
+    "operational_fit": "fewer credentials preferred"
+  },
+  "blocked_reasons": []
+}

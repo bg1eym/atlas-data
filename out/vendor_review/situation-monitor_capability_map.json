@@ -1,0 +1,50 @@
+{
+  "repo_url": "https://github.com/hipcityreg/situation-monitor",
+  "pinned_revision": "74ad5c086da0258636269423e65b008ad6bfc614",
+  "assessment_date": "2025-02-19",
+  "modules_and_data_entry": {
+    "api/news.ts": {
+      "purpose": "Fetch news from GDELT API",
+      "data_source": "GDELT (api.gdeltproject.org)",
+      "provides_crawl": false,
+      "evidence": "fetchCategoryNews() calls GDELT API via fetchWithProxy. No RSS parsing. No HTML scraping."
+    },
+    "api/markets.ts": {
+      "purpose": "Fetch market data",
+      "data_source": "Finnhub, external APIs",
+      "provides_crawl": false
+    },
+    "config/feeds.ts": {
+      "purpose": "RSS feed URL configuration",
+      "data_source": "Static config (30+ RSS URLs)",
+      "provides_crawl": false,
+      "evidence": "FEEDS is static config. URLs are NOT fetched by situation-monitor; news comes from GDELT. Feeds used only for source name mapping."
+    },
+    "config/api.ts": {
+      "purpose": "CORS proxy, API keys",
+      "provides_crawl": false,
+      "evidence": "fetchWithProxy uses Cloudflare Worker / corsproxy.io. Browser-only CORS workaround."
+    }
+  },
+  "ui_structure": {
+    "layout": ["Header", "Dashboard"],
+    "panels": ["NewsPanel", "MarketsPanel", "HeatmapPanel", "MapPanel", "NarrativePanel", "CorrelationPanel", "MainCharPanel", "FedPanel", "WhalePanel", "PolymarketPanel", "ContractsPanel", "LayoffsPanel", "IntelPanel", "SituationPanel", "WorldLeadersPanel", "PrinterPanel"],
+    "modals": ["SettingsModal", "MonitorFormModal", "OnboardingModal"]
+  },
+  "reusable_points": {
+    "layout_filtering": "Dashboard layout, panel visibility toggles. Can reference for UI structure.",
+    "map": "MapPanel uses D3 + TopoJSON for world map. Reusable for visualization.",
+    "timeline": "NewsPanel display patterns. Can reference for feed display.",
+    "feeds_config": "config/feeds.ts URL list. Can COPY URLs into atlas-radar sources.json; NOT use as runtime (situation-monitor does not fetch these).",
+    "category_mapping": "NewsCategory: politics, tech, finance, gov, ai, intel. Can inform atlas-radar category_hint."
+  },
+  "does_not_provide_crawl": {
+    "evidence": [
+      "api/news.ts: fetchCategoryNews fetches from GDELT API (single endpoint), not from FEEDS RSS URLs.",
+      "No RSS parser in codebase. No HTML scraper. No GitHub API client.",
+      "All fetches go through fetchWithProxy (CORS proxy) - browser-only pattern.",
+      "CLAUDE.md says 'RSS feeds' but implementation uses GDELT for news."
+    ],
+    "conclusion": "situation-monitor provides UI and config patterns. Crawl/fetch must be implemented by atlas-fetch skill."
+  }
+}

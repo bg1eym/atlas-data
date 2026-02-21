@@ -1,0 +1,12 @@
+{
+  "pipeline_run_id": "atlas-mlv9r111-9892wc",
+  "render_input_sha256": "b418a978d96431e5c8bec72794252282bdfc137dd0b7cf3f990bd6a49d23eca4",
+  "render_output_sha256": "7159980d8341bb362a71a169c4502d28411a66a4c1b338320e9ffa56963d7a89",
+  "render_timestamp": "2026-02-20T19:15:04.672Z",
+  "item_count": 138,
+  "filter_report": {
+    "keywords_hit": [],
+    "rejected_items_count": 0,
+    "rejected_samples": []
+  }
+}

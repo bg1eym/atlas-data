@@ -1,0 +1,47 @@
+{
+  "run_id": "atlas-mltq3qn4-klnrk3",
+  "total_items": 118,
+  "counts_by_radar_category": {
+    "tech_breakthrough": 45,
+    "social_phenomenon": 19,
+    "finance_capital": 5,
+    "policy_governance": 1,
+    "safety_incident": 29,
+    "energy_environment": 19
+  },
+  "counts_by_civ_tag": {
+    "Vinge/Compute": 78,
+    "Banks/Governance": 4,
+    "Antimemetics": 0,
+    "TedChiang/Language": 5,
+    "Egan": 25,
+    "Watts": 4,
+    "Simulation": 2,
+    "Religion/Meaning": 0
+  },
+  "counts_by_source": {
+    "Anthropic News": 1,
+    "TechCrunch Alt": 20,
+    "HN Front": 20,
+    "Ars Technica": 20,
+    "OpenAI Blog": 20,
+    "IEEE Spectrum": 20,
+    "Krebs on Security": 10,
+    "VentureBeat AI": 7
+  },
+  "top1_radar": {
+    "id": "tech_breakthrough",
+    "count": 45,
+    "share": 0.3813559322033898
+  },
+  "top1_civ_tag": {
+    "tag": "Vinge/Compute",
+    "count": 78,
+    "share": 0.6610169491525424
+  },
+  "top1_source": {
+    "source": "TechCrunch Alt",
+    "count": 20,
+    "share": 0.1694915254237288
+  }
+}

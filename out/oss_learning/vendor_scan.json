@@ -1,0 +1,14 @@
+{
+  "vendor_name": "",
+  "vendor_root": "/Users/qiangguo/atlas-radar/vendor/",
+  "framework": "",
+  "ui_entrypoints": [],
+  "layout_components": [
+    "/Users/qiangguo/atlas-radar/vendor/situation-monitor/src/lib/components/layout/Dashboard.svelte",
+    "/Users/qiangguo/atlas-radar/vendor/situation-monitor/src/lib/components/layout/Header.svelte",
+    "/Users/qiangguo/atlas-radar/vendor/situation-monitor/src/lib/components/panels/CryptoPanel.svelte"
+  ],
+  "interaction_points": {
+    "filter": "see layout_files"
+  }
+}

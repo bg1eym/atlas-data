@@ -1,0 +1,34 @@
+{
+  "repo_url": "https://github.com/hipcityreg/situation-monitor",
+  "pinned_revision": "74ad5c086da0258636269423e65b008ad6bfc614",
+  "assessment_date": "2025-02-19",
+  "detected_stack": {
+    "frontend": true,
+    "backend": false,
+    "frameworks": ["Svelte 5", "SvelteKit", "Vite", "Tailwind CSS", "D3", "TopoJSON"],
+    "language": "TypeScript",
+    "build": "vite build",
+    "deploy": "Vercel"
+  },
+  "candidate_components_to_reuse": [
+    "UI layout patterns for dashboard/map visualization",
+    "D3 + TopoJSON world map rendering",
+    "Tailwind-based styling approach",
+    "Svelte component structure for real-time display"
+  ],
+  "why_not_a_crawler_skill": "situation-monitor is a frontend-only dashboard. It displays pre-aggregated data (news, markets, geopolitical events) but does NOT implement: (1) source crawling/fetching, (2) RSS/API ingestion, (3) data pipeline, (4) provenance chain. It is a visualization/UI layer, not a data-ingestion skill. No SKILL.md, no capability declarations, no network fetch logic for external sources.",
+  "security_blockers": [
+    "license_missing": "No LICENSE file detected in repo root (GitHub API 404). Cannot verify allowed_license per SECURITY_POLICY.",
+    "hooks_unknown": "No install_hooks_scan performed (no package.json postinstall/preinstall visible in assessment).",
+    "not_in_TRUSTED_SOURCES": "hipcityreg/situation-monitor is NOT in atlas-radar TRUSTED_SOURCES.json allowlist.",
+    "pinned_revision_required": "Would need explicit pinned_revision before any install attempt."
+  ],
+  "recommendation": "module-reference",
+  "recommendation_reasoning": "Treat situation-monitor as UI/module REFERENCE only. Do NOT install as skill. (1) It fails TRUSTED_SOURCES gate. (2) It is not a crawler—it has no fetch/crawl capability to wrap. (3) License undetected blocks security review. (4) Selected code (D3 map, layout patterns) may be COPIED into atlas-radar repo and adapted; then wrapped as in-repo skill if needed. (5) Dashboard UI could inform atlas-radar renderer output format, but ingestion must be built separately (atlas-fetch).",
+  "next_steps": [
+    "Use situation-monitor as design reference for dashboard/map visualization",
+    "Copy D3/TopoJSON patterns into atlas-radar if map display is desired",
+    "Build atlas-fetch as in-repo skill for actual source ingestion",
+    "Do NOT add hipcityreg/situation-monitor to TRUSTED_SOURCES without license verification and formal review"
+  ]
+}

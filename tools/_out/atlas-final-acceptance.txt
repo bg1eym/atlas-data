@@ -1,0 +1,27 @@
+=== bash /Users/qiangguo/atlas-radar/.project-control/04-gates/preflight.sh ===
+=== Preflight PASS ===
+Latest ledger: PCK-CORE-ACTF-001
+=== bash /Users/qiangguo/atlas-radar/.project-control/04-gates/regress.sh ===
+RG-001 PASS: Version/identity evidence found in runtime
+RG-ACTF-001 PASS
+RG-ATLAS-001 PASS: No forbidden radar strings
+RG-ATLAS-002: gateway logs exist but no fingerprint yet (invoke /atlas help to populate)
+RG-ATLAS-002 PASS: build fingerprint format OK: build: 4359a0d PCK-ATLAS-004 oc-bind
+RG-ATLAS-002 PASS: build fingerprint present and format valid
+RG-ATLAS-003 PASS: No forbidden radar strings
+RG-ATLAS-004 PASS: No forbidden radar strings
+A) Testing probe with NODE_BIN+PNPM_JS...
+A) PASS: probe found node and pnpm.cjs
+B) Testing spawn node pnpm.cjs -v...
+B) PASS: spawn succeeded
+RG-ATLAS-004-shebang-proof PASS
+RG-ATLAS-FINAL-001 PASS
+RG-iteration-memory-prior-journal FAIL: iteration-memory gate failed
+REGRESS FAIL: /Users/qiangguo/atlas-radar/.project-control/02-regressions/RG-iteration-memory-prior-journal.sh
+=== bash /Users/qiangguo/atlas-radar/.project-control/04-gates/convergence.sh ===
+CONVERGENCE FAIL: contract.snapshot.md changed but structural_scope does not contain 'contract:update'
+Latest: PCK-CORE-ACTF-001
+Add 'contract:update' to structural_scope in meta.json if this change is intentional.
+=== bash /Users/qiangguo/atlas-radar/tools/atlas-final-activation-audit.sh ===
+{"plugin_path": "/Users/qiangguo/Projects/vibe-template/projects/oc-personal-agent-lab/oc-bind", "plist_env_present": {}, "gateway_atlas_logs": ["2026-02-19T19:47:57.034Z [gateway] [oc-bind] atlas: action=ACTION_RADAR_TODAY source=telegram durationMs=240 ok=false", "2026-02-19T19:51:21.294Z [gateway] [oc-bind] atlas: action=ACTION_RADAR_TODAY source=telegram durationMs=1786 ok=true", "2026-02-19T19:52:53.333Z [gateway] [oc-bind] atlas: action=ACTION_RADAR_TODAY source=telegram durationMs=1602 ok=true", "2026-02-20T03:57:38.591Z [gateway] [oc-bind] atlas: action=HELP source=telegram durationMs=0 ok=true", "2026-02-20T03:57:58.261Z [gateway] [oc-bind] atlas: action=HELP source=telegram durationMs=0 ok=true", "2026-02-20T04:25:47.508Z [gateway] [oc-bind] atlas: action=HELP source=telegram durationMs=0 ok=true", "2026-02-20T04:26:00.964Z [gateway] [oc-bind] atlas: action=HELP source=telegram durationMs=0 ok=true", "2026-02-20T05:48:16.227Z [gateway] [oc-bind] atlas: action=HELP source=telegram durationMs=0 ok=true", "2026-02-20T05:48:35.991Z [gateway] [oc-bind] atlas: action=HELP source=telegram durationMs=0 ok=true", "2026-02-20T06:26:51.930Z [gateway] [oc-bind] atlas: action=ATLAS_HELP source=telegram durationMs=0 ok=true", "2026-02-20T06:28:08.856Z [gateway] [oc-bind] atlas: action=ATLAS_TODAY source=telegram durationMs=1 ok=false error=config_missing", "2026-02-20T06:36:46.637Z [gateway] [oc-bind] atlas: action=ATLAS_DEBUG source=telegram durationMs=30 ok=true", "2026-02-20T06:40:25.415Z [gateway] [oc-bind] atlas: action=ATLAS_DEBUG source=telegram durationMs=34 ok=true", "2026-02-20T06:40:40.768Z [gateway] [oc-bind] atlas: action=ATLAS_TODAY source=telegram durationMs=3 ok=false dashboardUrl=\u2014 coverUrl=\u2014 coverMissing=true", "2026-02-20T08:33:51.699Z [gateway] [oc-bind] atlas: action=ATLAS_DEBUG source=telegram durationMs=37 ok=true", "2026-02-20T08:34:56.757Z [gateway] [oc-bind] atlas: action=ATLAS_TODAY source=telegram durationMs=2 ok=false dashboardUrl=\u2014 coverUrl=\u2014 coverMissing=true", "2026-02-20T09:09:57.851Z [gateway] [oc-bind] atlas: action=ATLAS_DEBUG source=telegram durationMs=21 ok=true", "2026-02-20T09:10:08.206Z [gateway] [oc-bind] atlas: action=ATLAS_TODAY source=telegram durationMs=2 ok=false dashboardUrl=\u2014 coverUrl=\u2014 coverMissing=true", "2026-02-20T09:10:33.563Z [gateway] [oc-bind] atlas: action=ATLAS_TODAY source=telegram durationMs=1 ok=false dashboardUrl=\u2014 coverUrl=\u2014 coverMissing=true", "2026-02-20T10:06:26.948Z [gateway] [oc-bind] atlas: action=HELP source=telegram durationMs=0 ok=true"], "probes": {"node_exists": true, "node_executable": true, "pnpm_exists": true, "atlas_root_exists": false, "atlas_root_has_package_json": false, "sparse_path_exit_code": 0, "sparse_path_stderr": ""}, "conclusion": {"root_cause": "ROOT_WRONG", "next_fix": "ATLAS_ROOT path does not exist; set to valid atlas-radar root"}}
+ACCEPTANCE FAIL

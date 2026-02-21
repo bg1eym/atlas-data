@@ -1,0 +1,1 @@
+{"ts":"2026-02-19T13:23:37.744Z","action":"add_source_override","source":{"kind":"news","name":"TechCrunch Alt","url":"https://techcrunch.com/feed/","adapter":"rss","category":"tech_breakthrough","weight":120},"actor":"cli:radar:add-source"}

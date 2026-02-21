@@ -1,0 +1,7 @@
+{
+  "verdict": "BLOCKED",
+  "exit_code": 42,
+  "reason": "input_pack_parse_failed:/Users/qiangguo/atlas-radar/environment/input_pack/ai_radar_sources.pdf:TypeError: pdfParse is not a function",
+  "mode": "INPUT_PACK",
+  "finished_at": "2026-02-20T17:29:03.313Z"
+}

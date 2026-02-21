@@ -1,0 +1,12 @@
+{
+  "ts": "2026-02-20T19:14:27.294Z",
+  "run_id": "20260221-031427",
+  "mode": "fallback_existing_config",
+  "input_pdf": "/Users/qiangguo/atlas-radar/environment/input_pack/ai_radar_sources.pdf",
+  "input_pdf_exists": true,
+  "sources_config": "/Users/qiangguo/atlas-radar/runtime/atlas/config/sources.json",
+  "sources_config_exists": true,
+  "sources_count": 23,
+  "ok": true,
+  "note": "Skipped PDF parsing; using runtime/atlas/config/sources.json as source of truth."
+}

@@ -1,0 +1,26 @@
+{
+  "name": "atlas-radar",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "atlas:fetch": "cd skills/atlas-fetch && npm run fetch",
+    "atlas:run": "npx tsx runtime/radar/pdf_sources_extract.ts && npx tsx scripts/generate_sources_config.ts && NODE_OPTIONS='--no-deprecation' npx tsx runtime/atlas/run_atlas.ts",
+    "atlas:tg:nl": "npx tsx runtime/atlas/tg_nl_handler.ts",
+    "radar:add-source": "npx tsx scripts/radar_add_source.ts",
+    "radar:extract": "npx tsx runtime/radar/pdf_sources_extract.ts",
+    "atlas:classify-only": "npx tsx scripts/atlas_classify_only.mjs",
+    "radar:sources": "node scripts/radar_sources_check.mjs",
+    "ui:dev": "cd ui/atlas-viewer && npm run dev",
+    "ui:build": "cd ui/atlas-viewer && npm run build"
+  },
+  "devDependencies": {
+    "pdf-parse": "^1",
+    "pdfjs-dist": "^5",
+    "tsx": "^4.19.0",
+    "typescript": "^5.3.0"
+  },
+  "dependencies": {
+    "yaml": "^2.8.2"
+  }
+}

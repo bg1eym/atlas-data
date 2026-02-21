@@ -1,0 +1,305 @@
+{
+  "radar_categories": [
+    {
+      "id": "tech_breakthrough",
+      "name_zh": "技术突破",
+      "name_en": "Tech Breakthrough",
+      "keywords": [
+        "模型",
+        "benchmark",
+        "SOTA",
+        "release",
+        "inference"
+      ],
+      "negative_keywords": [],
+      "notes": ""
+    },
+    {
+      "id": "social_phenomenon",
+      "name_zh": "社会现象",
+      "name_en": "Social Phenomenon",
+      "keywords": [
+        "adoption",
+        "就业",
+        "education",
+        "usage"
+      ],
+      "negative_keywords": [],
+      "notes": ""
+    },
+    {
+      "id": "finance_capital",
+      "name_zh": "金融与资本",
+      "name_en": "Finance & Capital",
+      "keywords": [
+        "funding",
+        "IPO",
+        "investment",
+        "估值"
+      ],
+      "negative_keywords": [],
+      "notes": ""
+    },
+    {
+      "id": "policy_governance",
+      "name_zh": "政策与治理",
+      "name_en": "Policy & Governance",
+      "keywords": [
+        "policy",
+        "regulation",
+        "AI Act",
+        "监管"
+      ],
+      "negative_keywords": [],
+      "notes": ""
+    },
+    {
+      "id": "safety_incident",
+      "name_zh": "安全事故",
+      "name_en": "Safety & Incident",
+      "keywords": [
+        "safety",
+        "breach",
+        "vulnerability",
+        "风险"
+      ],
+      "negative_keywords": [],
+      "notes": ""
+    },
+    {
+      "id": "energy_environment",
+      "name_zh": "能源环境",
+      "name_en": "Energy & Environment",
+      "keywords": [
+        "energy",
+        "datacenter",
+        "emission",
+        "碳"
+      ],
+      "negative_keywords": [],
+      "notes": ""
+    }
+  ],
+  "sources": [
+    {
+      "source_id": "openai-blog-1",
+      "name": "OpenAI Blog",
+      "kind": "official",
+      "adapter": "rss",
+      "url": "https://openai.com/blog/rss.xml",
+      "category_id": "tech_breakthrough",
+      "weight": 95
+    },
+    {
+      "source_id": "deepmind-blog-2",
+      "name": "DeepMind Blog",
+      "kind": "official",
+      "adapter": "rss",
+      "url": "https://deepmind.google/discover/blog/rss.xml",
+      "category_id": "tech_breakthrough",
+      "weight": 92
+    },
+    {
+      "source_id": "reuters-tech-3",
+      "name": "Reuters Tech",
+      "kind": "news",
+      "adapter": "rss",
+      "url": "https://www.reuters.com/technology/rss",
+      "category_id": "tech_breakthrough",
+      "weight": 90
+    },
+    {
+      "source_id": "techcrunch-4",
+      "name": "TechCrunch",
+      "kind": "news",
+      "adapter": "rss",
+      "url": "https://techcrunch.com/feed/",
+      "category_id": "social_phenomenon",
+      "weight": 86
+    },
+    {
+      "source_id": "hn-front-5",
+      "name": "HN Front",
+      "kind": "community",
+      "adapter": "rss",
+      "url": "https://news.ycombinator.com/rss",
+      "category_id": "social_phenomenon",
+      "weight": 82
+    },
+    {
+      "source_id": "reddit-ml-6",
+      "name": "Reddit ML",
+      "kind": "community",
+      "adapter": "rss",
+      "url": "https://www.reddit.com/r/MachineLearning/.rss",
+      "category_id": "social_phenomenon",
+      "weight": 80
+    },
+    {
+      "source_id": "reuters-business-7",
+      "name": "Reuters Business",
+      "kind": "news",
+      "adapter": "rss",
+      "url": "https://www.reuters.com/business/rss",
+      "category_id": "finance_capital",
+      "weight": 85
+    },
+    {
+      "source_id": "venturebeat-ai-8",
+      "name": "VentureBeat AI",
+      "kind": "news",
+      "adapter": "rss",
+      "url": "https://venturebeat.com/category/ai/feed/",
+      "category_id": "finance_capital",
+      "weight": 82
+    },
+    {
+      "source_id": "the-information-9",
+      "name": "The Information",
+      "kind": "report",
+      "adapter": "html",
+      "url": "https://www.theinformation.com",
+      "category_id": "finance_capital",
+      "weight": 78,
+      "selectors": [
+        "article a",
+        "main a"
+      ]
+    },
+    {
+      "source_id": "anthropic-news-10",
+      "name": "Anthropic News",
+      "kind": "official",
+      "adapter": "html",
+      "url": "https://www.anthropic.com/news",
+      "category_id": "policy_governance",
+      "weight": 88,
+      "selectors": [
+        "article a",
+        "main a"
+      ]
+    },
+    {
+      "source_id": "eu-commission-11",
+      "name": "EU Commission",
+      "kind": "official",
+      "adapter": "rss",
+      "url": "https://ec.europa.eu/commission/presscorner/rss/en",
+      "category_id": "policy_governance",
+      "weight": 84
+    },
+    {
+      "source_id": "stanford-hai-12",
+      "name": "Stanford HAI",
+      "kind": "report",
+      "adapter": "rss",
+      "url": "https://hai.stanford.edu/news/feed",
+      "category_id": "policy_governance",
+      "weight": 84
+    },
+    {
+      "source_id": "ars-technica-13",
+      "name": "Ars Technica",
+      "kind": "news",
+      "adapter": "rss",
+      "url": "https://feeds.arstechnica.com/arstechnica/index",
+      "category_id": "safety_incident",
+      "weight": 80
+    },
+    {
+      "source_id": "krebs-on-security-14",
+      "name": "Krebs on Security",
+      "kind": "report",
+      "adapter": "rss",
+      "url": "https://krebsonsecurity.com/feed/",
+      "category_id": "safety_incident",
+      "weight": 79
+    },
+    {
+      "source_id": "reuters-cybersecurity-15",
+      "name": "Reuters Cybersecurity",
+      "kind": "news",
+      "adapter": "rss",
+      "url": "https://www.reuters.com/technology/cybersecurity/rss",
+      "category_id": "safety_incident",
+      "weight": 78
+    },
+    {
+      "source_id": "datacenter-dynamics-16",
+      "name": "Datacenter Dynamics",
+      "kind": "news",
+      "adapter": "rss",
+      "url": "https://www.datacenterdynamics.com/en/feed/",
+      "category_id": "energy_environment",
+      "weight": 78
+    },
+    {
+      "source_id": "reuters-commodities-17",
+      "name": "Reuters Commodities",
+      "kind": "news",
+      "adapter": "rss",
+      "url": "https://www.reuters.com/markets/commodities/rss",
+      "category_id": "energy_environment",
+      "weight": 77
+    },
+    {
+      "source_id": "ieee-spectrum-18",
+      "name": "IEEE Spectrum",
+      "kind": "report",
+      "adapter": "rss",
+      "url": "https://spectrum.ieee.org/feeds/feed.rss",
+      "category_id": "energy_environment",
+      "weight": 76
+    }
+  ],
+  "kols": [
+    {
+      "kol_id": "andrew-ng",
+      "name": "Andrew Ng",
+      "platform": "x",
+      "handle_or_url": "https://x.com/AndrewYNg",
+      "kind": "kol",
+      "adapter": "x",
+      "category_id": "tech_breakthrough",
+      "weight": 80
+    },
+    {
+      "kol_id": "yann-lecun",
+      "name": "Yann LeCun",
+      "platform": "x",
+      "handle_or_url": "https://x.com/ylecun",
+      "kind": "kol",
+      "adapter": "x",
+      "category_id": "tech_breakthrough",
+      "weight": 80
+    },
+    {
+      "kol_id": "ethan-mollick",
+      "name": "Ethan Mollick",
+      "platform": "substack",
+      "handle_or_url": "https://oneusefulthing.substack.com",
+      "kind": "kol",
+      "adapter": "rss",
+      "category_id": "social_phenomenon",
+      "weight": 79
+    },
+    {
+      "kol_id": "gary-marcus",
+      "name": "Gary Marcus",
+      "platform": "substack",
+      "handle_or_url": "https://garymarcus.substack.com",
+      "kind": "kol",
+      "adapter": "rss",
+      "category_id": "policy_governance",
+      "weight": 76
+    }
+  ],
+  "_meta": {
+    "generated_at": "2026-02-20T15:08:56.607Z",
+    "inputs": [
+      "/Users/qiangguo/atlas-radar/environment/input_pack/ai_radar_sources.pdf",
+      "/Users/qiangguo/atlas-radar/environment/input_pack/ai_kols.pdf"
+    ],
+    "parser": "fallback_parse_error"
+  }
+}

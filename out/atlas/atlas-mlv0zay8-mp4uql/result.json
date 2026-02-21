@@ -1,0 +1,15 @@
+{
+  "run_id": "atlas-mlv0zay8-mp4uql",
+  "generated_at": "2026-02-20T15:09:22.014Z",
+  "item_count": 118,
+  "categories_count": 6,
+  "coverage": {
+    "overall_ok_rate": 0.3478,
+    "pipeline_verdict": "DEGRADED"
+  },
+  "dashboard_rel_path": "atlas-mlv0zay8-mp4uql",
+  "dashboard_url": "",
+  "cover_rel_path_or_url": null,
+  "cover_url": "",
+  "cover_missing": true
+}

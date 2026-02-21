@@ -1,0 +1,360 @@
+{
+  "version": "1.0",
+  "description": "Generated from extracted_sources.json. AI news, diverse kinds (official/news/community/report/kol).",
+  "sources": [
+    {
+      "id": "techcrunch-alt-tech-breakthrough-ovr",
+      "type": "ai_news",
+      "fetch_type": "rss",
+      "url": "https://techcrunch.com/feed/",
+      "source_name": "TechCrunch Alt",
+      "enabled": true,
+      "coverage_required": false,
+      "kind": "news",
+      "category": "tech_breakthrough",
+      "editorial_weight": 120
+    },
+    {
+      "id": "openai-blog-tech-breakthrough-1",
+      "type": "ai_news",
+      "fetch_type": "rss",
+      "url": "https://openai.com/blog/rss.xml",
+      "source_name": "OpenAI Blog",
+      "enabled": true,
+      "coverage_required": false,
+      "kind": "official",
+      "category": "tech_breakthrough",
+      "editorial_weight": 95
+    },
+    {
+      "id": "deepmind-blog-tech-breakthrough-2",
+      "type": "ai_news",
+      "fetch_type": "rss",
+      "url": "https://deepmind.google/discover/blog/rss.xml",
+      "source_name": "DeepMind Blog",
+      "enabled": true,
+      "coverage_required": false,
+      "kind": "official",
+      "category": "tech_breakthrough",
+      "editorial_weight": 92
+    },
+    {
+      "id": "reuters-tech-tech-breakthrough-3",
+      "type": "ai_news",
+      "fetch_type": "rss",
+      "url": "https://www.reuters.com/technology/rss",
+      "source_name": "Reuters Tech",
+      "enabled": true,
+      "coverage_required": false,
+      "kind": "news",
+      "category": "tech_breakthrough",
+      "editorial_weight": 90
+    },
+    {
+      "id": "anthropic-news-policy-governance-10",
+      "type": "ai_news",
+      "fetch_type": "html",
+      "url": "https://www.anthropic.com/news",
+      "source_name": "Anthropic News",
+      "enabled": true,
+      "coverage_required": false,
+      "kind": "official",
+      "category": "policy_governance",
+      "editorial_weight": 88,
+      "selectors": [
+        "article a",
+        "main a"
+      ]
+    },
+    {
+      "id": "techcrunch-social-phenomenon-4",
+      "type": "ai_news",
+      "fetch_type": "rss",
+      "url": "https://techcrunch.com/feed/",
+      "source_name": "TechCrunch",
+      "enabled": true,
+      "coverage_required": false,
+      "kind": "news",
+      "category": "social_phenomenon",
+      "editorial_weight": 86
+    },
+    {
+      "id": "reuters-business-finance-capital-7",
+      "type": "ai_news",
+      "fetch_type": "rss",
+      "url": "https://www.reuters.com/business/rss",
+      "source_name": "Reuters Business",
+      "enabled": true,
+      "coverage_required": false,
+      "kind": "news",
+      "category": "finance_capital",
+      "editorial_weight": 85
+    },
+    {
+      "id": "eu-commission-policy-governance-11",
+      "type": "ai_news",
+      "fetch_type": "rss",
+      "url": "https://ec.europa.eu/commission/presscorner/rss/en",
+      "source_name": "EU Commission",
+      "enabled": true,
+      "coverage_required": false,
+      "kind": "official",
+      "category": "policy_governance",
+      "editorial_weight": 84
+    },
+    {
+      "id": "stanford-hai-policy-governance-12",
+      "type": "ai_news",
+      "fetch_type": "rss",
+      "url": "https://hai.stanford.edu/news/feed",
+      "source_name": "Stanford HAI",
+      "enabled": true,
+      "coverage_required": false,
+      "kind": "report",
+      "category": "policy_governance",
+      "editorial_weight": 84
+    },
+    {
+      "id": "hn-front-social-phenomenon-5",
+      "type": "ai_news",
+      "fetch_type": "rss",
+      "url": "https://news.ycombinator.com/rss",
+      "source_name": "HN Front",
+      "enabled": true,
+      "coverage_required": false,
+      "kind": "community",
+      "category": "social_phenomenon",
+      "editorial_weight": 82
+    },
+    {
+      "id": "venturebeat-ai-finance-capital-8",
+      "type": "ai_news",
+      "fetch_type": "rss",
+      "url": "https://venturebeat.com/category/ai/feed/",
+      "source_name": "VentureBeat AI",
+      "enabled": true,
+      "coverage_required": false,
+      "kind": "news",
+      "category": "finance_capital",
+      "editorial_weight": 82
+    },
+    {
+      "id": "andrew-ng-tech-breakthrough-19",
+      "type": "ai_news",
+      "fetch_type": "x",
+      "url": "https://x.com/AndrewYNg",
+      "source_name": "Andrew Ng",
+      "enabled": true,
+      "coverage_required": false,
+      "kind": "kol",
+      "category": "tech_breakthrough",
+      "editorial_weight": 80,
+      "kol_profile": {
+        "platform": "x",
+        "handle_or_url": "https://x.com/AndrewYNg",
+        "fallback_signal_sources": [
+          {
+            "kind": "rss",
+            "label": "fallback rss/blog",
+            "url": "https://x.com/AndrewYNg"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ars-technica-safety-incident-13",
+      "type": "ai_news",
+      "fetch_type": "rss",
+      "url": "https://feeds.arstechnica.com/arstechnica/index",
+      "source_name": "Ars Technica",
+      "enabled": true,
+      "coverage_required": false,
+      "kind": "news",
+      "category": "safety_incident",
+      "editorial_weight": 80
+    },
+    {
+      "id": "reddit-ml-social-phenomenon-6",
+      "type": "ai_news",
+      "fetch_type": "rss",
+      "url": "https://www.reddit.com/r/MachineLearning/.rss",
+      "source_name": "Reddit ML",
+      "enabled": true,
+      "coverage_required": false,
+      "kind": "community",
+      "category": "social_phenomenon",
+      "editorial_weight": 80
+    },
+    {
+      "id": "yann-lecun-tech-breakthrough-20",
+      "type": "ai_news",
+      "fetch_type": "x",
+      "url": "https://x.com/ylecun",
+      "source_name": "Yann LeCun",
+      "enabled": true,
+      "coverage_required": false,
+      "kind": "kol",
+      "category": "tech_breakthrough",
+      "editorial_weight": 80,
+      "kol_profile": {
+        "platform": "x",
+        "handle_or_url": "https://x.com/ylecun",
+        "fallback_signal_sources": [
+          {
+            "kind": "rss",
+            "label": "fallback rss/blog",
+            "url": "https://x.com/ylecun"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ethan-mollick-social-phenomenon-21",
+      "type": "ai_news",
+      "fetch_type": "rss",
+      "url": "https://oneusefulthing.substack.com",
+      "source_name": "Ethan Mollick",
+      "enabled": true,
+      "coverage_required": false,
+      "kind": "kol",
+      "category": "social_phenomenon",
+      "editorial_weight": 79,
+      "kol_profile": {
+        "platform": "rss",
+        "handle_or_url": "https://oneusefulthing.substack.com",
+        "fallback_signal_sources": []
+      }
+    },
+    {
+      "id": "krebs-on-security-safety-incident-14",
+      "type": "ai_news",
+      "fetch_type": "rss",
+      "url": "https://krebsonsecurity.com/feed/",
+      "source_name": "Krebs on Security",
+      "enabled": true,
+      "coverage_required": false,
+      "kind": "report",
+      "category": "safety_incident",
+      "editorial_weight": 79
+    },
+    {
+      "id": "datacenter-dynamics-energy-environment-16",
+      "type": "ai_news",
+      "fetch_type": "rss",
+      "url": "https://www.datacenterdynamics.com/en/feed/",
+      "source_name": "Datacenter Dynamics",
+      "enabled": true,
+      "coverage_required": false,
+      "kind": "news",
+      "category": "energy_environment",
+      "editorial_weight": 78
+    },
+    {
+      "id": "reuters-cybersecurity-safety-incident-15",
+      "type": "ai_news",
+      "fetch_type": "rss",
+      "url": "https://www.reuters.com/technology/cybersecurity/rss",
+      "source_name": "Reuters Cybersecurity",
+      "enabled": true,
+      "coverage_required": false,
+      "kind": "news",
+      "category": "safety_incident",
+      "editorial_weight": 78
+    },
+    {
+      "id": "the-information-finance-capital-9",
+      "type": "ai_news",
+      "fetch_type": "html",
+      "url": "https://www.theinformation.com",
+      "source_name": "The Information",
+      "enabled": true,
+      "coverage_required": false,
+      "kind": "report",
+      "category": "finance_capital",
+      "editorial_weight": 78,
+      "selectors": [
+        "article a",
+        "main a"
+      ]
+    },
+    {
+      "id": "reuters-commodities-energy-environment-17",
+      "type": "ai_news",
+      "fetch_type": "rss",
+      "url": "https://www.reuters.com/markets/commodities/rss",
+      "source_name": "Reuters Commodities",
+      "enabled": true,
+      "coverage_required": false,
+      "kind": "news",
+      "category": "energy_environment",
+      "editorial_weight": 77
+    },
+    {
+      "id": "gary-marcus-policy-governance-22",
+      "type": "ai_news",
+      "fetch_type": "rss",
+      "url": "https://garymarcus.substack.com",
+      "source_name": "Gary Marcus",
+      "enabled": true,
+      "coverage_required": false,
+      "kind": "kol",
+      "category": "policy_governance",
+      "editorial_weight": 76,
+      "kol_profile": {
+        "platform": "rss",
+        "handle_or_url": "https://garymarcus.substack.com",
+        "fallback_signal_sources": []
+      }
+    },
+    {
+      "id": "ieee-spectrum-energy-environment-18",
+      "type": "ai_news",
+      "fetch_type": "rss",
+      "url": "https://spectrum.ieee.org/feeds/feed.rss",
+      "source_name": "IEEE Spectrum",
+      "enabled": true,
+      "coverage_required": false,
+      "kind": "report",
+      "category": "energy_environment",
+      "editorial_weight": 76
+    }
+  ],
+  "html_domain_allowlist": [
+    "aipolicy.substack.com",
+    "anthropic.com",
+    "arstechnica.com",
+    "brookings.edu",
+    "climatetech.substack.com",
+    "datacenterdynamics.com",
+    "deepmind.google",
+    "ec.europa.eu",
+    "ftc.gov",
+    "garymarcus.substack.com",
+    "github.com",
+    "hai.stanford.edu",
+    "krebsonsecurity.com",
+    "oneusefulthing.substack.com",
+    "openai.com",
+    "reddit.com",
+    "reuters.com",
+    "spectrum.ieee.org",
+    "substack.com",
+    "techcrunch.com",
+    "theinformation.com",
+    "venturebeat.com"
+  ],
+  "coverage_policy": "Diverse source coverage; official_share <= 0.40.",
+  "provenance": {
+    "generated_at": "2026-02-20T15:08:57.302Z",
+    "input_pack_parser": "fallback_parse_error",
+    "input_pack_inputs": [
+      "/Users/qiangguo/atlas-radar/environment/input_pack/ai_radar_sources.pdf",
+      "/Users/qiangguo/atlas-radar/environment/input_pack/ai_kols.pdf"
+    ],
+    "base_source_count": 22,
+    "override_count": 1,
+    "allowlist_extra_count": 0,
+    "overrides_file": "environment/sources_overrides.json",
+    "allowlist_extra_file": "environment/sources_allowlist_extra.json"
+  }
+}

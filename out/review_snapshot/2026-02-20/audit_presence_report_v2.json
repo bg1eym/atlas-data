@@ -1,0 +1,18 @@
+[
+  {
+    "script": "acceptance_apf_v2",
+    "mode": "LOCAL_ONLY"
+  },
+  {
+    "script": "acceptance_atlas_local",
+    "mode": "LOCAL"
+  },
+  {
+    "script": "acceptance_atlas_tg_e2e",
+    "mode": "TG_E2E"
+  },
+  {
+    "script": "acceptance_atlas_tg_nl_e2e",
+    "mode": "TG_NL_E2E"
+  }
+]

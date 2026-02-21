@@ -1,0 +1,56 @@
+{
+  "run_id": "accept-f-30000",
+  "started_at": "2026-02-19T07:00:57Z",
+  "verdict": "BLOCKED",
+  "steps": [
+    {
+      "name": "capability_extract",
+      "status": "PASS",
+      "evidence_paths": [
+        "/Users/qiangguo/atlas-radar/out/skills/accept-f-30000/capabilities/accept-f-fake.json"
+      ],
+      "timestamp": "2026-02-19T07:00:57Z"
+    },
+    {
+      "name": "guard",
+      "status": "PASS",
+      "evidence_paths": [],
+      "timestamp": "2026-02-19T07:00:57Z"
+    },
+    {
+      "name": "install",
+      "status": "PASS",
+      "evidence_paths": [
+        "/Users/qiangguo/atlas-radar/out/skills/accept-f-30000/plan/plan.json"
+      ],
+      "timestamp": "2026-02-19T07:00:58Z"
+    },
+    {
+      "name": "plan",
+      "status": "PASS",
+      "evidence_paths": [
+        "/Users/qiangguo/atlas-radar/out/skills/accept-f-30000/plan/plan.json"
+      ],
+      "timestamp": "2026-02-19T07:00:58Z"
+    },
+    {
+      "name": "security_review",
+      "status": "PASS",
+      "evidence_paths": [
+        "/Users/qiangguo/atlas-radar/out/skills/accept-f-30000/security/accept-f-fake_review.json"
+      ],
+      "timestamp": "2026-02-19T07:00:57Z"
+    },
+    {
+      "name": "verify",
+      "status": "BLOCKED",
+      "evidence_paths": [
+        "/Users/qiangguo/atlas-radar/out/skills/accept-f-30000/verify/verify_report.json"
+      ],
+      "timestamp": "2026-02-19T07:00:58Z"
+    }
+  ],
+  "exit_code": 42,
+  "reason": "INV-S4 requires_env not set",
+  "finished_at": "2026-02-19T07:00:58Z"
+}

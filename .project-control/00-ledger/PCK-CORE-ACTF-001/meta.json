@@ -1,0 +1,1 @@
+{"task_id":"PCK-CORE-ACTF-001","base_version":"PCK-BOOTSTRAP-000","inherits_failure_mode":"OK","declared_fix_target":"ACTF critical tests layer","verification_strategy":"RG-ACTF-001, ACTF","intent":"Introduce cross-project ACTF critical tests as PCK v4 mandatory layer","structural_scope":["pck:v4","gates:update","tests:add"],"timestamp":"2025-02-20T10:00:00.000Z"}

@@ -1,0 +1,8 @@
+{
+  "failure_mode": "OK",
+  "confidence": 1,
+  "signals": [
+    "all_checks_pass"
+  ],
+  "recommended_fix": ""
+}

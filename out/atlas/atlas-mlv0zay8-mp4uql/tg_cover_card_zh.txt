@@ -1,0 +1,13 @@
+🧭 Atlas 文明态势雷达（2026-02-20）
+
+• 🔥 （暂无结构性事件）
+• 🧠 最活跃文明标签：Vinge/Compute（80 条）
+• 📊 最活跃雷达栏目：tech_breakthrough（42 条）
+
+• 📡 覆盖率：8/23（15 个非 OK 来源）
+
+🟦 打开 Dashboard：http://localhost:5173/?run_id=atlas-mlv0zay8-mp4uql
+
+（中文摘要为自动生成，供快速判断）
+
+[中文占比 31%，需补充]

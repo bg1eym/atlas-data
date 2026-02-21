@@ -1,0 +1,25 @@
+{
+  "timestamp": "2026-02-20T15:33:42.000Z",
+  "host_os": "Darwin",
+  "pwd": "/Users/qiangguo/atlas-radar",
+  "env_summary": {},
+  "checks": {
+    "env_presence": {
+      "ok": true,
+      "details": "required_keys_check"
+    },
+    "root_path": {
+      "ok": true,
+      "details": "exists,is_dir"
+    },
+    "key_files": {
+      "ok": true,
+      "details": "exists"
+    },
+    "cwd_access": {
+      "ok": true,
+      "details": "readable"
+    }
+  },
+  "required_fail": false
+}

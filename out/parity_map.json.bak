@@ -1,0 +1,42 @@
+{
+  "version": "1.0",
+  "vendor_root": "vendor/situation-monitor",
+  "mappings": [
+    {
+      "vendor_component_path": "vendor/situation-monitor/src/lib/components/common/Panel.svelte",
+      "our_component_path": "ui/atlas-viewer/src/Dashboard/Panel.svelte",
+      "parity_items": ["layout", "typography", "density", "interaction", "state_model"],
+      "deltas": []
+    },
+    {
+      "vendor_component_path": "vendor/situation-monitor/src/lib/components/layout/Dashboard.svelte",
+      "our_component_path": "ui/atlas-viewer/src/Dashboard/DashboardView.svelte",
+      "parity_items": ["layout", "typography", "density", "interaction", "state_model"],
+      "deltas": ["civilization tags", "5D scoring", "Chinese summary", "TG cover card", "Radar categories"]
+    },
+    {
+      "vendor_component_path": "vendor/situation-monitor/src/lib/components/layout/Header.svelte",
+      "our_component_path": "ui/atlas-viewer/src/Dashboard/Header.svelte",
+      "parity_items": ["layout", "typography", "density", "interaction", "state_model"],
+      "deltas": ["title: Atlas Civilization Situation Monitor"]
+    },
+    {
+      "vendor_component_path": "vendor/situation-monitor/src/lib/components/panels/HeatmapPanel.svelte",
+      "our_component_path": "ui/atlas-viewer/src/Dashboard/CivilizationHeatmapPanel.svelte",
+      "parity_items": ["layout", "typography", "density", "interaction"],
+      "deltas": ["8 civ tags instead of sectors", "structural count bars"]
+    },
+    {
+      "vendor_component_path": "vendor/situation-monitor/src/lib/components/common/NewsItem.svelte",
+      "our_component_path": "ui/atlas-viewer/src/Dashboard/ItemCard.svelte",
+      "parity_items": ["layout", "typography", "density", "interaction"],
+      "deltas": []
+    },
+    {
+      "vendor_component_path": "vendor/situation-monitor/src/lib/components/common/NewsItem.svelte",
+      "our_component_path": "ui/atlas-viewer/src/Dashboard/CivItemCard.svelte",
+      "parity_items": ["layout", "typography", "density", "interaction"],
+      "deltas": ["score_total badge", "5D dots", "summary_zh"]
+    }
+  ]
+}

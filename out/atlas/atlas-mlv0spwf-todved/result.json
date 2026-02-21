@@ -1,0 +1,15 @@
+{
+  "run_id": "atlas-mlv0spwf-todved",
+  "generated_at": "2026-02-20T15:04:23.338Z",
+  "item_count": 118,
+  "categories_count": 6,
+  "coverage": {
+    "overall_ok_rate": 0.3913,
+    "pipeline_verdict": "DEGRADED"
+  },
+  "dashboard_rel_path": "atlas-mlv0spwf-todved",
+  "dashboard_url": "",
+  "cover_rel_path_or_url": null,
+  "cover_url": "",
+  "cover_missing": true
+}

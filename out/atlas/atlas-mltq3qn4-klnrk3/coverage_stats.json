@@ -1,0 +1,366 @@
+{
+  "run_id": "atlas-mltq3qn4-klnrk3",
+  "generated_at": "2026-02-19T17:17:06.501Z",
+  "total_sources": 23,
+  "ok_sources": 8,
+  "overall_ok_rate": 0.3478,
+  "blocked_share": 0.087,
+  "by_kind": {
+    "news": {
+      "ok": 3,
+      "total": 9,
+      "ok_rate": 0.3333
+    },
+    "official": {
+      "ok": 2,
+      "total": 4,
+      "ok_rate": 0.5
+    },
+    "community": {
+      "ok": 1,
+      "total": 2,
+      "ok_rate": 0.5
+    },
+    "report": {
+      "ok": 2,
+      "total": 4,
+      "ok_rate": 0.5
+    },
+    "kol": {
+      "ok": 0,
+      "total": 4,
+      "ok_rate": 0
+    }
+  },
+  "by_adapter": {
+    "rss": {
+      "ok": 7,
+      "total": 19,
+      "ok_rate": 0.3684
+    },
+    "html": {
+      "ok": 1,
+      "total": 2,
+      "ok_rate": 0.5
+    },
+    "x": {
+      "ok": 0,
+      "total": 2,
+      "ok_rate": 0
+    }
+  },
+  "per_source": [
+    {
+      "source_id": "techcrunch-alt-tech-breakthrough-ovr",
+      "source_name": "TechCrunch Alt",
+      "status": "ok",
+      "bucket": "ok",
+      "http_status": null,
+      "reason": "",
+      "kind": "news",
+      "adapter": "rss"
+    },
+    {
+      "source_id": "openai-blog-tech-breakthrough-1",
+      "source_name": "OpenAI Blog",
+      "status": "ok",
+      "bucket": "ok",
+      "http_status": null,
+      "reason": "",
+      "kind": "official",
+      "adapter": "rss"
+    },
+    {
+      "source_id": "anthropic-news-policy-governance-10",
+      "source_name": "Anthropic News",
+      "status": "ok",
+      "bucket": "ok",
+      "http_status": null,
+      "reason": "",
+      "kind": "official",
+      "adapter": "html"
+    },
+    {
+      "source_id": "reuters-tech-tech-breakthrough-3",
+      "source_name": "Reuters Tech",
+      "status": "unknown",
+      "bucket": "unknown",
+      "http_status": null,
+      "reason": "Error: HTML adapter requires selectors for reuters-tech-tech-breakthrough-3",
+      "kind": "news",
+      "adapter": "rss"
+    },
+    {
+      "source_id": "deepmind-blog-tech-breakthrough-2",
+      "source_name": "DeepMind Blog",
+      "status": "unknown",
+      "bucket": "unknown",
+      "http_status": null,
+      "reason": "Error: HTML adapter requires selectors for deepmind-blog-tech-breakthrough-2",
+      "kind": "official",
+      "adapter": "rss"
+    },
+    {
+      "source_id": "techcrunch-social-phenomenon-4",
+      "source_name": "TechCrunch",
+      "status": "empty",
+      "bucket": "empty",
+      "http_status": null,
+      "reason": "no items returned",
+      "kind": "news",
+      "adapter": "rss"
+    },
+    {
+      "source_id": "hn-front-social-phenomenon-5",
+      "source_name": "HN Front",
+      "status": "ok",
+      "bucket": "ok",
+      "http_status": null,
+      "reason": "",
+      "kind": "community",
+      "adapter": "rss"
+    },
+    {
+      "source_id": "reuters-business-finance-capital-7",
+      "source_name": "Reuters Business",
+      "status": "unknown",
+      "bucket": "unknown",
+      "http_status": null,
+      "reason": "Error: HTML adapter requires selectors for reuters-business-finance-capital-7",
+      "kind": "news",
+      "adapter": "rss"
+    },
+    {
+      "source_id": "stanford-hai-policy-governance-12",
+      "source_name": "Stanford HAI",
+      "status": "unknown",
+      "bucket": "unknown",
+      "http_status": null,
+      "reason": "Error: HTML adapter requires selectors for stanford-hai-policy-governance-12",
+      "kind": "report",
+      "adapter": "rss"
+    },
+    {
+      "source_id": "eu-commission-policy-governance-11",
+      "source_name": "EU Commission",
+      "status": "unknown",
+      "bucket": "unknown",
+      "http_status": null,
+      "reason": "Error: HTML adapter requires selectors for eu-commission-policy-governance-11",
+      "kind": "official",
+      "adapter": "rss"
+    },
+    {
+      "source_id": "venturebeat-ai-finance-capital-8",
+      "source_name": "VentureBeat AI",
+      "status": "ok",
+      "bucket": "ok",
+      "http_status": null,
+      "reason": "",
+      "kind": "news",
+      "adapter": "rss"
+    },
+    {
+      "source_id": "ars-technica-safety-incident-13",
+      "source_name": "Ars Technica",
+      "status": "ok",
+      "bucket": "ok",
+      "http_status": null,
+      "reason": "",
+      "kind": "news",
+      "adapter": "rss"
+    },
+    {
+      "source_id": "andrew-ng-tech-breakthrough-19",
+      "source_name": "Andrew Ng",
+      "status": "blocked",
+      "bucket": "blocked",
+      "http_status": null,
+      "reason": "Error: X adapter not configured; use rss/blog/github fallback",
+      "kind": "kol",
+      "adapter": "x"
+    },
+    {
+      "source_id": "yann-lecun-tech-breakthrough-20",
+      "source_name": "Yann LeCun",
+      "status": "blocked",
+      "bucket": "blocked",
+      "http_status": null,
+      "reason": "Error: X adapter not configured; use rss/blog/github fallback",
+      "kind": "kol",
+      "adapter": "x"
+    },
+    {
+      "source_id": "reddit-ml-social-phenomenon-6",
+      "source_name": "Reddit ML",
+      "status": "unknown",
+      "bucket": "unknown",
+      "http_status": null,
+      "reason": "Error: HTML adapter requires selectors for reddit-ml-social-phenomenon-6",
+      "kind": "community",
+      "adapter": "rss"
+    },
+    {
+      "source_id": "krebs-on-security-safety-incident-14",
+      "source_name": "Krebs on Security",
+      "status": "ok",
+      "bucket": "ok",
+      "http_status": null,
+      "reason": "",
+      "kind": "report",
+      "adapter": "rss"
+    },
+    {
+      "source_id": "the-information-finance-capital-9",
+      "source_name": "The Information",
+      "status": "http_4xx",
+      "bucket": "http_4xx",
+      "http_status": 403,
+      "reason": "Error: HTTP 403 for the-information-finance-capital-9",
+      "kind": "report",
+      "adapter": "html"
+    },
+    {
+      "source_id": "reuters-cybersecurity-safety-incident-15",
+      "source_name": "Reuters Cybersecurity",
+      "status": "unknown",
+      "bucket": "unknown",
+      "http_status": null,
+      "reason": "Error: HTML adapter requires selectors for reuters-cybersecurity-safety-incident-15",
+      "kind": "news",
+      "adapter": "rss"
+    },
+    {
+      "source_id": "ethan-mollick-social-phenomenon-21",
+      "source_name": "Ethan Mollick",
+      "status": "unknown",
+      "bucket": "unknown",
+      "http_status": null,
+      "reason": "Error: HTML adapter requires selectors for ethan-mollick-social-phenomenon-21",
+      "kind": "kol",
+      "adapter": "rss"
+    },
+    {
+      "source_id": "datacenter-dynamics-energy-environment-16",
+      "source_name": "Datacenter Dynamics",
+      "status": "unknown",
+      "bucket": "unknown",
+      "http_status": null,
+      "reason": "Error: HTML adapter requires selectors for datacenter-dynamics-energy-environment-16",
+      "kind": "news",
+      "adapter": "rss"
+    },
+    {
+      "source_id": "ieee-spectrum-energy-environment-18",
+      "source_name": "IEEE Spectrum",
+      "status": "ok",
+      "bucket": "ok",
+      "http_status": null,
+      "reason": "",
+      "kind": "report",
+      "adapter": "rss"
+    },
+    {
+      "source_id": "gary-marcus-policy-governance-22",
+      "source_name": "Gary Marcus",
+      "status": "unknown",
+      "bucket": "unknown",
+      "http_status": null,
+      "reason": "Error: HTML adapter requires selectors for gary-marcus-policy-governance-22",
+      "kind": "kol",
+      "adapter": "rss"
+    },
+    {
+      "source_id": "reuters-commodities-energy-environment-17",
+      "source_name": "Reuters Commodities",
+      "status": "unknown",
+      "bucket": "unknown",
+      "http_status": null,
+      "reason": "Error: HTML adapter requires selectors for reuters-commodities-energy-environment-17",
+      "kind": "news",
+      "adapter": "rss"
+    }
+  ],
+  "top_failed_sources": [
+    {
+      "source_id": "reuters-tech-tech-breakthrough-3",
+      "source_name": "Reuters Tech",
+      "bucket": "unknown",
+      "reason": "Error: HTML adapter requires selectors for reuters-tech-tech-breakthrough-3",
+      "kind": "news",
+      "adapter": "rss"
+    },
+    {
+      "source_id": "deepmind-blog-tech-breakthrough-2",
+      "source_name": "DeepMind Blog",
+      "bucket": "unknown",
+      "reason": "Error: HTML adapter requires selectors for deepmind-blog-tech-breakthrough-2",
+      "kind": "official",
+      "adapter": "rss"
+    },
+    {
+      "source_id": "techcrunch-social-phenomenon-4",
+      "source_name": "TechCrunch",
+      "bucket": "empty",
+      "reason": "no items returned",
+      "kind": "news",
+      "adapter": "rss"
+    },
+    {
+      "source_id": "reuters-business-finance-capital-7",
+      "source_name": "Reuters Business",
+      "bucket": "unknown",
+      "reason": "Error: HTML adapter requires selectors for reuters-business-finance-capital-7",
+      "kind": "news",
+      "adapter": "rss"
+    },
+    {
+      "source_id": "stanford-hai-policy-governance-12",
+      "source_name": "Stanford HAI",
+      "bucket": "unknown",
+      "reason": "Error: HTML adapter requires selectors for stanford-hai-policy-governance-12",
+      "kind": "report",
+      "adapter": "rss"
+    },
+    {
+      "source_id": "eu-commission-policy-governance-11",
+      "source_name": "EU Commission",
+      "bucket": "unknown",
+      "reason": "Error: HTML adapter requires selectors for eu-commission-policy-governance-11",
+      "kind": "official",
+      "adapter": "rss"
+    },
+    {
+      "source_id": "andrew-ng-tech-breakthrough-19",
+      "source_name": "Andrew Ng",
+      "bucket": "blocked",
+      "reason": "Error: X adapter not configured; use rss/blog/github fallback",
+      "kind": "kol",
+      "adapter": "x"
+    },
+    {
+      "source_id": "yann-lecun-tech-breakthrough-20",
+      "source_name": "Yann LeCun",
+      "bucket": "blocked",
+      "reason": "Error: X adapter not configured; use rss/blog/github fallback",
+      "kind": "kol",
+      "adapter": "x"
+    },
+    {
+      "source_id": "reddit-ml-social-phenomenon-6",
+      "source_name": "Reddit ML",
+      "bucket": "unknown",
+      "reason": "Error: HTML adapter requires selectors for reddit-ml-social-phenomenon-6",
+      "kind": "community",
+      "adapter": "rss"
+    },
+    {
+      "source_id": "the-information-finance-capital-9",
+      "source_name": "The Information",
+      "bucket": "http_4xx",
+      "reason": "Error: HTTP 403 for the-information-finance-capital-9",
+      "kind": "report",
+      "adapter": "html"
+    }
+  ]
+}

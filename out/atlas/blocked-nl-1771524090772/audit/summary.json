@@ -1,0 +1,11 @@
+{
+  "pipeline_verdict": "OK",
+  "delivery_verdict": "NOT_CONFIGURED",
+  "delivery_reason": "missing TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID, DASHBOARD_URL_BASE",
+  "steps": [
+    "Configure TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID, DASHBOARD_URL_BASE",
+    "See README_TG.md"
+  ],
+  "exit_code": 42,
+  "finished_at": "2026-02-19T18:01:30.772Z"
+}

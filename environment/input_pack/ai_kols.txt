@@ -1,0 +1,5 @@
+# AI KOLs
+# Add KOL handles or URLs. Supported formats: pdf, txt, md, yaml, json
+# Example:
+# https://x.com/AndrewYNg
+# https://oneusefulthing.substack.com

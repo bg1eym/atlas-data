@@ -1,0 +1,52 @@
+{
+  "run_id": "accept-g-30000",
+  "started_at": "2026-02-19T07:00:58Z",
+  "verdict": "FAIL",
+  "steps": [
+    {
+      "name": "capability_extract",
+      "status": "FAIL",
+      "evidence_paths": [
+        "/Users/qiangguo/atlas-radar/out/skills/accept-g-30000/capabilities/accept-g-fake.json"
+      ],
+      "timestamp": "2026-02-19T07:00:58Z"
+    },
+    {
+      "name": "guard",
+      "status": "PASS",
+      "evidence_paths": [],
+      "timestamp": "2026-02-19T07:00:58Z"
+    },
+    {
+      "name": "security_review",
+      "status": "SKIPPED",
+      "evidence_paths": [],
+      "timestamp": "2026-02-19T07:00:58Z",
+      "reason": "not reached due to FAIL: INV-S5 capabilities not in taxonomy"
+    },
+    {
+      "name": "plan",
+      "status": "SKIPPED",
+      "evidence_paths": [],
+      "timestamp": "2026-02-19T07:00:58Z",
+      "reason": "not reached due to FAIL: INV-S5 capabilities not in taxonomy"
+    },
+    {
+      "name": "install",
+      "status": "SKIPPED",
+      "evidence_paths": [],
+      "timestamp": "2026-02-19T07:00:58Z",
+      "reason": "not reached due to FAIL: INV-S5 capabilities not in taxonomy"
+    },
+    {
+      "name": "verify",
+      "status": "SKIPPED",
+      "evidence_paths": [],
+      "timestamp": "2026-02-19T07:00:58Z",
+      "reason": "not reached due to FAIL: INV-S5 capabilities not in taxonomy"
+    }
+  ],
+  "exit_code": 1,
+  "reason": "INV-S5 capabilities not in taxonomy",
+  "finished_at": "2026-02-19T07:00:58Z"
+}

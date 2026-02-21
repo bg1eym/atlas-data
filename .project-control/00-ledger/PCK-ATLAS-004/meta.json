@@ -1,0 +1,1 @@
+{"task_id":"PCK-ATLAS-004","base_version":"PCK-ATLAS-003","inherits_failure_mode":"OK","declared_fix_target":"Shebang-proof: node executes pnpm.cjs directly","verification_strategy":"RG-ATLAS-004-shebang-proof","intent":"Replace pnpm shebang spawn with node direct execution (shebang-proof)","structural_scope":["executor:update"],"timestamp":"2025-02-20T17:00:00.000Z"}

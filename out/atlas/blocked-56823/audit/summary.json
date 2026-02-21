@@ -1,0 +1,32 @@
+{
+  "verdict": "BLOCKED",
+  "exit_code": 42,
+  "reason": "missing TELEGRAM_BOT_TOKEN or TELEGRAM_CHAT_ID or DASHBOARD_URL_BASE",
+  "steps": [
+    {
+      "name": "guard",
+      "status": "SKIPPED"
+    },
+    {
+      "name": "security_review",
+      "status": "SKIPPED"
+    },
+    {
+      "name": "capability_extract",
+      "status": "SKIPPED"
+    },
+    {
+      "name": "plan",
+      "status": "SKIPPED"
+    },
+    {
+      "name": "install",
+      "status": "SKIPPED"
+    },
+    {
+      "name": "verify",
+      "status": "SKIPPED"
+    }
+  ],
+  "finished_at": "2026-02-19T16:40:28Z"
+}

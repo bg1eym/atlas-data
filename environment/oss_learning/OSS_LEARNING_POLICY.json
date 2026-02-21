@@ -1,0 +1,18 @@
+{
+  "mode": "HARD_LEARNING",
+  "principles": [
+    "Design/Interaction Parity first, then Delta-only",
+    "Learning must reference code+design details (files/components/props/layout/IA/interaction)",
+    "No free-form redesign; borrow existing patterns whenever available",
+    "Every parity claim must have evidence reference"
+  ],
+  "required_artifacts": [
+    "out/oss_learning/vendor_parity_map.json",
+    "out/oss_learning/ui_parity_checklist.md",
+    "out/oss_learning/delta_spec.md"
+  ],
+  "forbidden_patterns": [
+    "high-level-only summary without file/component references",
+    "new IA/layout invented without mapping to vendor"
+  ]
+}

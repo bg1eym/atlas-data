@@ -1,0 +1,53 @@
+{
+  "run_id": "accept-e-30000",
+  "started_at": "2026-02-19T07:00:57Z",
+  "verdict": "BLOCKED",
+  "steps": [
+    {
+      "name": "capability_extract",
+      "status": "BLOCKED",
+      "evidence_paths": [
+        "/Users/qiangguo/atlas-radar/out/skills/accept-e-30000/capabilities/accept-e-fake.json"
+      ],
+      "timestamp": "2026-02-19T07:00:57Z"
+    },
+    {
+      "name": "guard",
+      "status": "PASS",
+      "evidence_paths": [],
+      "timestamp": "2026-02-19T07:00:57Z"
+    },
+    {
+      "name": "security_review",
+      "status": "PASS",
+      "evidence_paths": [
+        "/Users/qiangguo/atlas-radar/out/skills/accept-e-30000/security/accept-e-fake_review.json"
+      ],
+      "timestamp": "2026-02-19T07:00:57Z"
+    },
+    {
+      "name": "plan",
+      "status": "SKIPPED",
+      "evidence_paths": [],
+      "timestamp": "2026-02-19T07:00:57Z",
+      "reason": "not reached due to BLOCKED: INV-S2 external_network requires non-empty network_domains"
+    },
+    {
+      "name": "install",
+      "status": "SKIPPED",
+      "evidence_paths": [],
+      "timestamp": "2026-02-19T07:00:57Z",
+      "reason": "not reached due to BLOCKED: INV-S2 external_network requires non-empty network_domains"
+    },
+    {
+      "name": "verify",
+      "status": "SKIPPED",
+      "evidence_paths": [],
+      "timestamp": "2026-02-19T07:00:57Z",
+      "reason": "not reached due to BLOCKED: INV-S2 external_network requires non-empty network_domains"
+    }
+  ],
+  "exit_code": 42,
+  "reason": "INV-S2 external_network requires non-empty network_domains",
+  "finished_at": "2026-02-19T07:00:57Z"
+}

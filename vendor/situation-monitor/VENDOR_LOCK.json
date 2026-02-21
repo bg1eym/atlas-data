@@ -1,0 +1,7 @@
+{
+  "repo_url": "https://github.com/hipcityreg/situation-monitor",
+  "pinned_revision": "74ad5c086da0258636269423e65b008ad6bfc614",
+  "vendor_method": "zip_archive",
+  "vendor_date": "2025-02-19",
+  "purpose": "UI/module reference only. NOT installed as skill. Fetch/crawl implemented by atlas-fetch skill."
+}

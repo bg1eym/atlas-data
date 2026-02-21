@@ -1,0 +1,8 @@
+{
+  "pipeline_verdict": "DEGRADED",
+  "delivery_verdict": "NOT_CONFIGURED",
+  "delivery_reason": null,
+  "verdict": "DEGRADED",
+  "exit_code": 0,
+  "finished_at": "2026-02-20T18:43:20.165Z"
+}

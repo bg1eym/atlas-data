@@ -1,0 +1,19 @@
+{
+  "skill_id": "accept-f-fake",
+  "capabilities": [
+    "shell.exec"
+  ],
+  "claimed_tools": [
+    "cli"
+  ],
+  "requires_env": [
+    "TELEGRAM_BOT_TOKEN"
+  ],
+  "risk_flags": [
+    "shell_exec"
+  ],
+  "network_domains": [],
+  "evidence_refs": [
+    "SKILL.md"
+  ]
+}

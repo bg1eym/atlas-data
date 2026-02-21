@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Atlas Sources Overrides",
+  "type": "object",
+  "required": ["version", "sources"],
+  "properties": {
+    "version": {
+      "const": "1.0"
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["kind", "name", "url", "adapter", "category"],
+        "properties": {
+          "kind": { "enum": ["official", "news", "community", "report", "kol"] },
+          "name": { "type": "string", "minLength": 1 },
+          "url": { "type": "string", "pattern": "^https://.+" },
+          "adapter": { "enum": ["rss", "html", "github", "x"] },
+          "category": { "type": "string", "minLength": 1 },
+          "weight": { "type": "number" },
+          "enabled": { "type": "boolean" },
+          "kol_profile": { "type": "object" }
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": false
+}

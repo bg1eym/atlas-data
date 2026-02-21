@@ -1,0 +1,130 @@
+{
+  "entries": {
+    "openai-blog-tech-breakthrough-1": {
+      "source_id": "openai-blog-tech-breakthrough-1",
+      "last_fetch_timestamp": 1771614868458,
+      "last_run_id": "atlas-mlv9r111-9892wc"
+    },
+    "openai-github-tech-breakthrough-4": {
+      "source_id": "openai-github-tech-breakthrough-4",
+      "last_fetch_timestamp": 1771507441693,
+      "last_run_id": "atlas-mlthsao4-yb6p0i"
+    },
+    "deepmind-blog-tech-breakthrough-3": {
+      "source_id": "deepmind-blog-tech-breakthrough-3",
+      "last_fetch_timestamp": 1771507438840,
+      "last_run_id": "atlas-mlthsao4-yb6p0i"
+    },
+    "anthropic-news-tech-breakthrough-2": {
+      "source_id": "anthropic-news-tech-breakthrough-2",
+      "last_fetch_timestamp": 1771507440785,
+      "last_run_id": "atlas-mlthsao4-yb6p0i"
+    },
+    "brookings-tech-policy-governance-10": {
+      "source_id": "brookings-tech-policy-governance-10",
+      "last_fetch_timestamp": 1771507432207,
+      "last_run_id": "atlas-mlthsao4-yb6p0i"
+    },
+    "techcrunch-social-phenomenon-6": {
+      "source_id": "techcrunch-social-phenomenon-6",
+      "last_fetch_timestamp": 1771507438320,
+      "last_run_id": "atlas-mlthsao4-yb6p0i"
+    },
+    "venturebeat-ai-finance-capital-8": {
+      "source_id": "venturebeat-ai-finance-capital-8",
+      "last_fetch_timestamp": 1771614877413,
+      "last_run_id": "atlas-mlv9r111-9892wc"
+    },
+    "ars-technica-safety-incident-12": {
+      "source_id": "ars-technica-safety-incident-12",
+      "last_fetch_timestamp": 1771507432267,
+      "last_run_id": "atlas-mlthsao4-yb6p0i"
+    },
+    "stanford-hai-tech-breakthrough-15": {
+      "source_id": "stanford-hai-tech-breakthrough-15",
+      "last_fetch_timestamp": 1771507437972,
+      "last_run_id": "atlas-mlthsao4-yb6p0i"
+    },
+    "krebs-on-security-safety-incident-16": {
+      "source_id": "krebs-on-security-safety-incident-16",
+      "last_fetch_timestamp": 1771507434744,
+      "last_run_id": "atlas-mlthsao4-yb6p0i"
+    },
+    "stanford-hai--ai-index--energy-environment-17": {
+      "source_id": "stanford-hai--ai-index--energy-environment-17",
+      "last_fetch_timestamp": 1771507438016,
+      "last_run_id": "atlas-mlthsao4-yb6p0i"
+    },
+    "gary-marcus--substack--social-phenomenon-20": {
+      "source_id": "gary-marcus--substack--social-phenomenon-20",
+      "last_fetch_timestamp": 1771507433182,
+      "last_run_id": "atlas-mlthsao4-yb6p0i"
+    },
+    "ieee-spectrum-energy-environment-18": {
+      "source_id": "ieee-spectrum-energy-environment-18",
+      "last_fetch_timestamp": 1771614879910,
+      "last_run_id": "atlas-mlv9r111-9892wc"
+    },
+    "mollick--substack--social-phenomenon-19": {
+      "source_id": "mollick--substack--social-phenomenon-19",
+      "last_fetch_timestamp": 1771507435774,
+      "last_run_id": "atlas-mlthsao4-yb6p0i"
+    },
+    "ai-policy--substack--policy-governance-23": {
+      "source_id": "ai-policy--substack--policy-governance-23",
+      "last_fetch_timestamp": 1771507432825,
+      "last_run_id": "atlas-mlthsao4-yb6p0i"
+    },
+    "climate-tech--substack--energy-environment-24": {
+      "source_id": "climate-tech--substack--energy-environment-24",
+      "last_fetch_timestamp": 1771507433422,
+      "last_run_id": "atlas-mlthsao4-yb6p0i"
+    },
+    "the-information-finance-capital-21": {
+      "source_id": "the-information-finance-capital-21",
+      "last_fetch_timestamp": 1771505146786,
+      "last_run_id": "atlas-mltgf5ap-27kojt"
+    },
+    "eu-commission-policy-governance-25": {
+      "source_id": "eu-commission-policy-governance-25",
+      "last_fetch_timestamp": 1771507434647,
+      "last_run_id": "atlas-mlthsao4-yb6p0i"
+    },
+    "techcrunch-alt-tech-breakthrough-ovr": {
+      "source_id": "techcrunch-alt-tech-breakthrough-ovr",
+      "last_fetch_timestamp": 1771614868315,
+      "last_run_id": "atlas-mlv9r111-9892wc"
+    },
+    "anthropic-news-policy-governance-10": {
+      "source_id": "anthropic-news-policy-governance-10",
+      "last_fetch_timestamp": 1771614875622,
+      "last_run_id": "atlas-mlv9r111-9892wc"
+    },
+    "techcrunch-social-phenomenon-4": {
+      "source_id": "techcrunch-social-phenomenon-4",
+      "last_fetch_timestamp": 1771614875668,
+      "last_run_id": "atlas-mlv9r111-9892wc"
+    },
+    "hn-front-social-phenomenon-5": {
+      "source_id": "hn-front-social-phenomenon-5",
+      "last_fetch_timestamp": 1771614876523,
+      "last_run_id": "atlas-mlv9r111-9892wc"
+    },
+    "ars-technica-safety-incident-13": {
+      "source_id": "ars-technica-safety-incident-13",
+      "last_fetch_timestamp": 1771614878626,
+      "last_run_id": "atlas-mlv9r111-9892wc"
+    },
+    "krebs-on-security-safety-incident-14": {
+      "source_id": "krebs-on-security-safety-incident-14",
+      "last_fetch_timestamp": 1771614879063,
+      "last_run_id": "atlas-mlv9r111-9892wc"
+    },
+    "reddit-ml-social-phenomenon-6": {
+      "source_id": "reddit-ml-social-phenomenon-6",
+      "last_fetch_timestamp": 1771614878971,
+      "last_run_id": "atlas-mlv9r111-9892wc"
+    }
+  },
+  "updated_at": "2026-02-20T19:14:39.910Z"
+}

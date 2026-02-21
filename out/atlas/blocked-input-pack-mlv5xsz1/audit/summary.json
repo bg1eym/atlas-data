@@ -1,0 +1,7 @@
+{
+  "verdict": "BLOCKED",
+  "exit_code": 42,
+  "reason": "input_pack_parse_failed:/Users/qiangguo/atlas-radar/environment/input_pack/ai_radar_sources.pdf:Error: Cannot find package 'pdf-parse' imported from /Users/qiangguo/atlas-radar/runtime/radar/pdf_sources_extract.ts",
+  "mode": "INPUT_PACK",
+  "finished_at": "2026-02-20T17:27:45.901Z"
+}

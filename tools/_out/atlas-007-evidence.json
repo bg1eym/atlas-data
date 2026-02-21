@@ -1,0 +1,12 @@
+{
+  "telegram_debug_ok": true,
+  "telegram_today_ok": false,
+  "launchd_consistent": true,
+  "atlas_pipeline_ok": false,
+  "repeated_failure": false,
+  "new_failure_mode": "exit 42;ATLAS_PIPELINE_FAILED",
+  "convergence_status": "failed",
+  "telegram_debug_failure": "",
+  "telegram_today_failure": "exit 42",
+  "previous_failure_mode": "OK"
+}

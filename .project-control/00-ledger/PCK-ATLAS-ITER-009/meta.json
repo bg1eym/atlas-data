@@ -1,0 +1,10 @@
+{
+  "task_id": "PCK-ATLAS-ITER-009",
+  "base_version": "PCK-ATLAS-008",
+  "inherits_failure_mode": "ATLAS_PIPELINE_BLOCKED / ATLAS_ROOT_INVALID",
+  "declared_fix_target": "Launchd ATLAS_ROOT points to a real atlas-radar repo root with scripts.atlas:run",
+  "verification_strategy": "CT-ATLAS-ENV-001, RG-ATLAS-ENV-001, tools/atlas-env-audit.sh, /atlas debug fields",
+  "intent": "Fix wrong repo dir + wrong ATLAS_ROOT recurrence. Hard requirement: correct repo root + correct ATLAS_ROOT enforced by gates.",
+  "structural_scope": ["atlas:env-audit", "gateway:env-validation", "regression:add"],
+  "timestamp": "2026-02-20T20:00:00.000Z"
+}

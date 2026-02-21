@@ -1,0 +1,55 @@
+=== Check All ===
+=== Parity Guard ===
+  OK: OPEN_SOURCE_PARITY.md exists
+  OK: Found 1 PARITY_MAP.md
+  Checking /Users/qiangguo/atlas-radar/docs/parity/situation-monitor/PARITY_MAP.md ...
+  OK: ARCH_NOTES.md exists
+=== Parity Guard PASS ===
+=== Input Pack Gate ===
+  sources=18 kols=4 parser=fallback_parse_error
+  audit: /Users/qiangguo/atlas-radar/out/atlas/atlas-mltq7t07-m31vk8/audit/input_pack_gate_summary.json
+PASS: input_pack_gate
+classification_sanity:
+  run_id=atlas-mltq7t07-m31vk8
+  top1_radar_share=0.3813559322033898
+  top1_source_share=0.1694915254237288
+  official_share=0.17391304347826086
+  unique_sources=8
+  categories_present=6
+classification_sanity: OK
+=== Summary Gate (run_id=atlas-mltq7t07-m31vk8, N=50) ===
+  first N=50: missing summary_en=0, missing summary_zh=0
+  failing sample ids: []
+=== Summary Gate PASS ===
+=== Drilldown Integrity Gate (run_id=atlas-mltq7t07-m31vk8) ===
+  OK: coverage has source_name; items match; category_hint present
+=== Drilldown Integrity Gate PASS ===
+tg_cover_card_sanity: OK (bullets=4, chinese_ratio=40%)
+=== nl_router_sanity ===
+npm warn Unknown env config "devdir". This will stop working in the next major version of npm.
+PASS: '今天的文明态势雷达' => atlas_run
+npm warn Unknown env config "devdir". This will stop working in the next major version of npm.
+PASS: '给我最新AI时政雷达' => atlas_run
+npm warn Unknown env config "devdir". This will stop working in the next major version of npm.
+PASS: '生成一份文明态势看板并发TG' => atlas_run
+npm warn Unknown env config "devdir". This will stop working in the next major version of npm.
+PASS: '打开dashboard' => atlas_run
+npm warn Unknown env config "devdir". This will stop working in the next major version of npm.
+PASS: '/atlas run' => atlas_run
+npm warn Unknown env config "devdir". This will stop working in the next major version of npm.
+PASS: '明天天气怎么样' => help
+nl_router_sanity: OK
+=== TG Slash Router Sanity ===
+PASS: '/atlas run' => atlas_run
+PASS: '/radar schedule test' => atlas_run
+tg_slash_router_sanity: OK
+=== Verdict Semantics Gate ===
+FAIL: pipeline_verdict must be OK (got: DEGRADED)
+{
+  "pipeline_verdict": "DEGRADED",
+  "delivery_verdict": "NOT_CONFIGURED",
+  "delivery_reason": null,
+  "verdict": "DEGRADED",
+  "exit_code": 0,
+  "finished_at": "2026-02-19T17:56:06.715Z"
+}

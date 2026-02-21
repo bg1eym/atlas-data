@@ -1,0 +1,20 @@
+{
+  "workflows": {
+    "OSS_HARD_LEARNING": {
+      "when": [
+        "request.contains('learn vendor')",
+        "request.contains('parity')",
+        "vendor_root.exists"
+      ],
+      "steps": [
+        "skills/00_guard.sh",
+        "skills/05_security_review.sh",
+        "oss/10_vendor_scan.sh",
+        "oss/20_parity_map.sh",
+        "oss/30_delta_spec.sh",
+        "oss/40_cursor_task_emit.sh",
+        "oss/90_acceptance_contract.sh"
+      ]
+    }
+  }
+}

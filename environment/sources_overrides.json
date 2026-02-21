@@ -1,0 +1,13 @@
+{
+  "version": "1.0",
+  "sources": [
+    {
+      "kind": "news",
+      "name": "TechCrunch Alt",
+      "url": "https://techcrunch.com/feed/",
+      "adapter": "rss",
+      "category": "tech_breakthrough",
+      "weight": 120
+    }
+  ]
+}

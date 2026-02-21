@@ -1,0 +1,21 @@
+=== Atlas-Radar Acceptance Matrix Verify ===
+Snapshot dir: /Users/qiangguo/atlas-radar/out/review_snapshot/2026-02-19
+
+----- scripts/acceptance_apf_v2.sh -----
+Scenario A (no token): EXIT=0
+  => OK (LOCAL_ONLY pass)
+Scenario B (RADAR_MOCK=1): EXIT=42
+  => OK (forbidden env blocked or script exits non-zero)
+Scenario C: (skip - apf_v2 is LOCAL_ONLY)
+
+----- Failure injection D/E/F -----
+Scenario D (APF_TEST_RENDER_EMPTY): EXIT=1
+  => OK (expected FAIL, got exit 1)
+Scenario E (APF_TEST_SKIP_READBACK): EXIT=1
+  => OK (expected FAIL, got exit 1)
+Scenario F (APF_TEST_FORCE_MINIMAL_FILTER): EXIT=1
+  => OK (expected FAIL, got exit 1)
+
+Wrote: /Users/qiangguo/atlas-radar/out/review_snapshot/2026-02-19/acceptance_matrix_v2.json
+Wrote: /Users/qiangguo/atlas-radar/out/review_snapshot/2026-02-19/audit_presence_report_v2.json
+=== Summary: PASS=6 FAIL=0 ===

@@ -1,0 +1,51 @@
+{
+  "run_id": "accept-h-30000",
+  "started_at": "2026-02-19T07:00:58Z",
+  "verdict": "FAIL",
+  "steps": [
+    {
+      "name": "guard",
+      "status": "PASS",
+      "evidence_paths": [],
+      "timestamp": "2026-02-19T07:00:58Z"
+    },
+    {
+      "name": "security_review",
+      "status": "SKIPPED",
+      "evidence_paths": [],
+      "timestamp": "2026-02-19T07:00:58Z",
+      "reason": "not reached due to PENDING: "
+    },
+    {
+      "name": "capability_extract",
+      "status": "SKIPPED",
+      "evidence_paths": [],
+      "timestamp": "2026-02-19T07:00:58Z",
+      "reason": "not reached due to PENDING: "
+    },
+    {
+      "name": "plan",
+      "status": "SKIPPED",
+      "evidence_paths": [],
+      "timestamp": "2026-02-19T07:00:58Z",
+      "reason": "not reached due to PENDING: "
+    },
+    {
+      "name": "install",
+      "status": "SKIPPED",
+      "evidence_paths": [],
+      "timestamp": "2026-02-19T07:00:58Z",
+      "reason": "not reached due to PENDING: "
+    },
+    {
+      "name": "verify",
+      "status": "SKIPPED",
+      "evidence_paths": [],
+      "timestamp": "2026-02-19T07:00:58Z",
+      "reason": "not reached due to PENDING: "
+    }
+  ],
+  "exit_code": 1,
+  "reason": "steps padded (INV-S3)",
+  "finished_at": "2026-02-19T07:00:58Z"
+}

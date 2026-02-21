@@ -1,0 +1,339 @@
+=== Atlas-Radar Skills Framework v1.3 Acceptance ===
+=== Scenario A: No credentials ===
+audit_dir: /Users/qiangguo/atlas-radar/out/skills/accept-a-30000/audit
+Guard OK. RUN_ID=accept-a-30000 OUT_BASE=/Users/qiangguo/atlas-radar/out/skills/accept-a-30000
+PASS: security review OK
+{
+  "skill_id": "atlas-fetch",
+  "source_ref": "atlas-radar/atlas-radar",
+  "pinned_revision": "HEAD",
+  "review_level": "L2",
+  "findings": [],
+  "verdict": "PASS",
+  "risk_flags": [
+    "external_network"
+  ],
+  "top_level_deps": 0,
+  "license_detected": "unknown",
+  "install_hooks_scan": "clean"
+}
+Wrote /Users/qiangguo/atlas-radar/out/skills/accept-a-30000/capabilities/atlas-fetch.json
+{
+  "skill_id": "atlas-fetch",
+  "capabilities": [
+    "web.fetch"
+  ],
+  "claimed_tools": [
+    "cli"
+  ],
+  "requires_env": [],
+  "risk_flags": [
+    "external_network"
+  ],
+  "network_domains": [
+    "anthropic.com",
+    "openai.com"
+  ],
+  "evidence_refs": [
+    "SKILL.md"
+  ]
+}
+Wrote /Users/qiangguo/atlas-radar/out/skills/accept-a-30000/plan/plan.json
+{
+  "capability_match_table": {
+    "web.fetch": {
+      "skill_id": "atlas-fetch",
+      "score": 100
+    }
+  },
+  "selected_skills": [
+    "atlas-fetch"
+  ],
+  "scoring_rules": {
+    "trust_level": "T0>T1>T2",
+    "security_verdict": "PASS only",
+    "least_privilege": "minimize permissions",
+    "operational_fit": "fewer credentials preferred"
+  },
+  "blocked_reasons": []
+}
+OK: atlas-fetch installed at /Users/qiangguo/atlas-radar/skills/atlas-fetch
+Install phase complete.
+atlas-fetch: PASS
+Verify phase complete.
+Scenario A done.
+=== Scenario B: Local skill, no token needed ===
+audit_dir: /Users/qiangguo/atlas-radar/out/skills/accept-b-30000/audit
+Guard OK. RUN_ID=accept-b-30000 OUT_BASE=/Users/qiangguo/atlas-radar/out/skills/accept-b-30000
+PASS: security review OK
+{
+  "skill_id": "atlas-fetch",
+  "source_ref": "atlas-radar/atlas-radar",
+  "pinned_revision": "HEAD",
+  "review_level": "L2",
+  "findings": [],
+  "verdict": "PASS",
+  "risk_flags": [
+    "external_network"
+  ],
+  "top_level_deps": 0,
+  "license_detected": "unknown",
+  "install_hooks_scan": "clean"
+}
+Wrote /Users/qiangguo/atlas-radar/out/skills/accept-b-30000/capabilities/atlas-fetch.json
+{
+  "skill_id": "atlas-fetch",
+  "capabilities": [
+    "web.fetch"
+  ],
+  "claimed_tools": [
+    "cli"
+  ],
+  "requires_env": [],
+  "risk_flags": [
+    "external_network"
+  ],
+  "network_domains": [
+    "anthropic.com",
+    "openai.com"
+  ],
+  "evidence_refs": [
+    "SKILL.md"
+  ]
+}
+Wrote /Users/qiangguo/atlas-radar/out/skills/accept-b-30000/plan/plan.json
+{
+  "capability_match_table": {
+    "web.fetch": {
+      "skill_id": "atlas-fetch",
+      "score": 100
+    }
+  },
+  "selected_skills": [
+    "atlas-fetch"
+  ],
+  "scoring_rules": {
+    "trust_level": "T0>T1>T2",
+    "security_verdict": "PASS only",
+    "least_privilege": "minimize permissions",
+    "operational_fit": "fewer credentials preferred"
+  },
+  "blocked_reasons": []
+}
+OK: atlas-fetch installed at /Users/qiangguo/atlas-radar/skills/atlas-fetch
+Install phase complete.
+atlas-fetch: PASS
+Verify phase complete.
+Wrote /Users/qiangguo/atlas-radar/runtime/skills/skills_enabled.json
+{
+  "enabled": [
+    {
+      "skill_id": "atlas-fetch",
+      "pinned_revision": "HEAD",
+      "capabilities": [
+        "web.fetch"
+      ],
+      "enabled_at": "2026-02-19T07:00:56Z"
+    }
+  ],
+  "updated_at": "2026-02-19T07:00:56Z"
+}
+Scenario B PASS.
+=== Scenario C: Forbidden env RADAR_MOCK=1 ===
+audit_dir: /Users/qiangguo/atlas-radar/out/skills/accept-c-30000/audit
+Expected BLOCKED: exit 42
+Scenario C BLOCKED as expected.
+=== Demo: Source not in TRUSTED_SOURCES ===
+FAIL: source random/unknown-repo not in TRUSTED_SOURCES allowlist
+audit_dir: /Users/qiangguo/atlas-radar/out/skills/accept-blocked-30000/audit
+BLOCKED as expected: source not in TRUSTED_SOURCES
+=== Scenario D: shell_exec + review_level=L0 => BLOCKED(42) ===
+audit_dir: /Users/qiangguo/atlas-radar/out/skills/accept-d-30000/audit
+Guard OK. RUN_ID=accept-d-30000 OUT_BASE=/Users/qiangguo/atlas-radar/out/skills/accept-d-30000
+BLOCKED: risk_flags=[
+  "shell_exec"
+] requires review_level>=L1, got L0 (INV-S1)
+BLOCKED: security review failed
+Scenario D OK: BLOCKED(42) as expected
+=== Scenario E: external_network + network_domains unknown => BLOCKED(42) ===
+audit_dir: /Users/qiangguo/atlas-radar/out/skills/accept-e-30000/audit
+Guard OK. RUN_ID=accept-e-30000 OUT_BASE=/Users/qiangguo/atlas-radar/out/skills/accept-e-30000
+PASS: security review OK
+{
+  "skill_id": "accept-e-fake",
+  "source_ref": "atlas-radar/atlas-radar",
+  "pinned_revision": "HEAD",
+  "review_level": "L2",
+  "findings": [],
+  "verdict": "PASS",
+  "risk_flags": [
+    "external_network"
+  ],
+  "top_level_deps": 0,
+  "license_detected": "unknown",
+  "install_hooks_scan": "clean"
+}
+BLOCKED: external_network requires non-empty network_domains (got ["unknown"]) (INV-S2)
+Scenario E OK: BLOCKED(42) as expected (INV-S2)
+=== Scenario F: requires_env 未设置 => BLOCKED(42) ===
+audit_dir: /Users/qiangguo/atlas-radar/out/skills/accept-f-30000/audit
+Guard OK. RUN_ID=accept-f-30000 OUT_BASE=/Users/qiangguo/atlas-radar/out/skills/accept-f-30000
+PASS: security review OK
+{
+  "skill_id": "accept-f-fake",
+  "source_ref": "atlas-radar/atlas-radar",
+  "pinned_revision": "HEAD",
+  "review_level": "L1",
+  "findings": [],
+  "verdict": "PASS",
+  "risk_flags": [
+    "shell_exec"
+  ],
+  "top_level_deps": 0,
+  "license_detected": "unknown",
+  "install_hooks_scan": "clean"
+}
+Wrote /Users/qiangguo/atlas-radar/out/skills/accept-f-30000/capabilities/accept-f-fake.json
+{
+  "skill_id": "accept-f-fake",
+  "capabilities": [
+    "shell.exec"
+  ],
+  "claimed_tools": [
+    "cli"
+  ],
+  "requires_env": [
+    "TELEGRAM_BOT_TOKEN"
+  ],
+  "risk_flags": [
+    "shell_exec"
+  ],
+  "network_domains": [],
+  "evidence_refs": [
+    "SKILL.md"
+  ]
+}
+Wrote /Users/qiangguo/atlas-radar/out/skills/accept-f-30000/plan/plan.json
+{
+  "capability_match_table": {
+    "shell.exec": {
+      "skill_id": "accept-f-fake",
+      "score": 100
+    }
+  },
+  "selected_skills": [
+    "accept-f-fake"
+  ],
+  "scoring_rules": {
+    "trust_level": "T0>T1>T2",
+    "security_verdict": "PASS only",
+    "least_privilege": "minimize permissions",
+    "operational_fit": "fewer credentials preferred"
+  },
+  "blocked_reasons": []
+}
+OK: accept-f-fake installed at /Users/qiangguo/atlas-radar/skills/accept-f-fake
+Install phase complete.
+BLOCKED: accept-f-fake requires TELEGRAM_BOT_TOKEN but it is not set (INV-S4)
+accept-f-fake: BLOCKED
+BLOCKED: one or more skills require credentials that are not set (INV-S4)
+Scenario F OK: BLOCKED(42) as expected
+=== Scenario G: capability 非 taxonomy => FAIL(1) ===
+audit_dir: /Users/qiangguo/atlas-radar/out/skills/accept-g-30000/audit
+Guard OK. RUN_ID=accept-g-30000 OUT_BASE=/Users/qiangguo/atlas-radar/out/skills/accept-g-30000
+FAIL: capabilities not in taxonomy: fake.unknown.capability  (INV-S5)
+Scenario G OK: FAIL(1) as expected
+=== Scenario H: audit steps <6 => FAIL(1) ===
+audit_dir: /Users/qiangguo/atlas-radar/out/skills/accept-h-30000/audit
+Guard OK. RUN_ID=accept-h-30000 OUT_BASE=/Users/qiangguo/atlas-radar/out/skills/accept-h-30000
+Scenario H OK: FAIL(1) as expected (steps < 6)
+=== Scenario I: Request→Capabilities evidence (INV-S7) ===
+audit_dir: /Users/qiangguo/atlas-radar/out/skills/accept-i-30000/audit
+Guard OK. RUN_ID=accept-i-30000 OUT_BASE=/Users/qiangguo/atlas-radar/out/skills/accept-i-30000
+PASS: security review OK
+{
+  "skill_id": "atlas-fetch",
+  "source_ref": "atlas-radar/atlas-radar",
+  "pinned_revision": "HEAD",
+  "review_level": "L2",
+  "findings": [],
+  "verdict": "PASS",
+  "risk_flags": [
+    "external_network"
+  ],
+  "top_level_deps": 0,
+  "license_detected": "unknown",
+  "install_hooks_scan": "clean"
+}
+Wrote /Users/qiangguo/atlas-radar/out/skills/accept-i-30000/capabilities/atlas-fetch.json
+{
+  "skill_id": "atlas-fetch",
+  "capabilities": [
+    "web.fetch"
+  ],
+  "claimed_tools": [
+    "cli"
+  ],
+  "requires_env": [],
+  "risk_flags": [
+    "external_network"
+  ],
+  "network_domains": [
+    "anthropic.com",
+    "openai.com"
+  ],
+  "evidence_refs": [
+    "SKILL.md"
+  ]
+}
+Wrote /Users/qiangguo/atlas-radar/out/skills/accept-i-30000/request/analysis.json
+{
+  "request_sha256": "8bfd5eda604f5b2ce370fad1df39f3c30c7af8e987b2bd389670f2f264df85f2",
+  "extracted_intent": "Fetch AI news from configured sources ",
+  "required_capabilities": [
+    "web.fetch"
+  ],
+  "forbidden_capabilities": [],
+  "required_credentials": [],
+  "constraints": {}
+}
+Wrote /Users/qiangguo/atlas-radar/out/skills/accept-i-30000/plan/plan.json
+{
+  "capability_match_table": {
+    "web.fetch": {
+      "skill_id": "atlas-fetch",
+      "score": 100
+    }
+  },
+  "selected_skills": [
+    "atlas-fetch"
+  ],
+  "scoring_rules": {
+    "trust_level": "T0>T1>T2",
+    "security_verdict": "PASS only",
+    "least_privilege": "minimize permissions",
+    "operational_fit": "fewer credentials preferred"
+  },
+  "blocked_reasons": []
+}
+OK: atlas-fetch installed at /Users/qiangguo/atlas-radar/skills/atlas-fetch
+Install phase complete.
+atlas-fetch: PASS
+Verify phase complete.
+Wrote /Users/qiangguo/atlas-radar/runtime/skills/skills_enabled.json
+{
+  "enabled": [
+    {
+      "skill_id": "atlas-fetch",
+      "pinned_revision": "HEAD",
+      "capabilities": [
+        "web.fetch"
+      ],
+      "enabled_at": "2026-02-19T07:00:58Z"
+    }
+  ],
+  "updated_at": "2026-02-19T07:00:58Z"
+}
+Scenario I PASS.
+
+=== All scenarios done ===

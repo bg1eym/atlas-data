@@ -1,0 +1,7 @@
+{
+  "verdict": "BLOCKED",
+  "exit_code": 42,
+  "reason": "input_pack_empty_extraction",
+  "mode": "INPUT_PACK",
+  "finished_at": "2026-02-20T18:25:43.572Z"
+}

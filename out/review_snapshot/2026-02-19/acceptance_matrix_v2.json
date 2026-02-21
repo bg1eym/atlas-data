@@ -1,0 +1,44 @@
+[
+  {
+    "script": "acceptance_apf_v2",
+    "scenario_a": {
+      "exit_code": 0
+    },
+    "scenario_d": {
+      "exit_code": 1
+    },
+    "scenario_e": {
+      "exit_code": 1
+    },
+    "scenario_f": {
+      "exit_code": 1
+    }
+  },
+  {
+    "script": "acceptance_atlas_local",
+    "mode": "LOCAL",
+    "scenario": {
+      "exit_code": 1
+    }
+  },
+  {
+    "script": "acceptance_atlas_tg_e2e",
+    "mode": "TG_E2E",
+    "scenario_no_token": {
+      "exit_code": 42
+    },
+    "scenario_forbidden_env": {
+      "exit_code": 42
+    }
+  },
+  {
+    "script": "acceptance_atlas_tg_nl_e2e",
+    "mode": "TG_NL_E2E",
+    "scenario_no_token": {
+      "exit_code": 42
+    },
+    "scenario_with_creds": {
+      "exit_code": 42
+    }
+  }
+]

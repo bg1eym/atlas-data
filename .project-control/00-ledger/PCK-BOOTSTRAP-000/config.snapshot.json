@@ -1,0 +1,45 @@
+{
+  "captured_at": "2025-02-19T00:00:00.000Z",
+  "environment_variables": [
+    "ATLAS_RADAR_ROOT",
+    "ATLAS_RUN_ID",
+    "ATLAS_OUT_DIR",
+    "SKILLS_OUT_BASE",
+    "TELEGRAM_BOT_TOKEN",
+    "TELEGRAM_CHAT_ID",
+    "DASHBOARD_URL_BASE",
+    "INPUT_PACK_DIR",
+    "RADAR_INPUT_PACK_PATHS",
+    "PDF_EXTRACT_ALLOW_FALLBACK",
+    "ATLAS_ROOT",
+    "ATLAS_DASHBOARD_URL_BASE",
+    "ATLAS_COVER_URL_BASE",
+    "OC_BIND_CWD",
+    "OC_BIND_ENABLED",
+    "ATLAS_SKIP_TRANSLATE",
+    "ATLAS_MYMEMORY_EMAIL",
+    "ATLAS_UI_BASE_URL",
+    "INPUT_PACK_MIN_SOURCES_PER_CATEGORY",
+    "INPUT_PACK_MIN_KOLS",
+    "DEBUG"
+  ],
+  "config_files": [
+    {
+      "path": "package.json",
+      "sha256": "143423a4b43cdec618076e8506beea87daab106a1e9b4a9d4157eb4d8a38ace8"
+    },
+    {
+      "path": "runtime/atlas/config/sources.json",
+      "sha256": "956524c4348b1c1bc57a58a88766ae51982c86849ee66a7904aa970c39d42e92"
+    },
+    {
+      "path": "environment/input_pack/ai_radar_sources.txt",
+      "sha256": "a2f485bb13e54802053e63d51a1a88edcd4d07e3f229e0eb1e0f79517e06a2b4"
+    },
+    {
+      "path": "environment/input_pack/ai_kols.txt",
+      "sha256": "9bc43d6f8f1429a1690be8803ecfd0d9d361e0f01d42345ecdf5c0e8e4d68336"
+    }
+  ],
+  "entry_command": "pnpm run atlas:run"
+}

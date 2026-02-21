@@ -1,0 +1,10 @@
+{
+  "request_sha256": "8bfd5eda604f5b2ce370fad1df39f3c30c7af8e987b2bd389670f2f264df85f2",
+  "extracted_intent": "Fetch AI news from configured sources ",
+  "required_capabilities": [
+    "web.fetch"
+  ],
+  "forbidden_capabilities": [],
+  "required_credentials": [],
+  "constraints": {}
+}

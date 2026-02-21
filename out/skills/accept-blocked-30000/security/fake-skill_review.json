@@ -1,0 +1,14 @@
+{
+  "skill_id": "fake-skill",
+  "source_ref": "random/unknown-repo",
+  "pinned_revision": "a1b2c3d4e5f6789012345678901234567890abcd",
+  "review_level": "L0",
+  "findings": [
+    "source not in TRUSTED_SOURCES"
+  ],
+  "verdict": "BLOCKED",
+  "risk_flags": [],
+  "top_level_deps": 0,
+  "license_detected": "unknown",
+  "install_hooks_scan": "clean"
+}

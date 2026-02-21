@@ -1,0 +1,6 @@
+{
+  "verdict": "BLOCKED",
+  "exit_code": 42,
+  "reason": "missing TELEGRAM_BOT_TOKEN or TELEGRAM_CHAT_ID or DASHBOARD_URL_BASE",
+  "mode": "TG_NL_E2E"
+}

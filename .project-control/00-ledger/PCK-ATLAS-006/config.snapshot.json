@@ -1,0 +1,1 @@
+{"captured_at":"2026-02-20T14:00:00.000Z","env_keys":["ATLAS_ROOT","ATLAS_DASHBOARD_URL_BASE","ATLAS_COVER_URL_BASE","NODE_BIN","PNPM_JS"],"entry_commands":["pnpm run atlas:run","bash tools/atlas-acceptance-ATLAS-005.sh","bash tools/atlas-root-discovery.sh"]}

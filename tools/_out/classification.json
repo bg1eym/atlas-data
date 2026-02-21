@@ -1,0 +1,6 @@
+{
+  "failure_mode": "ATLAS_ROOT_INVALID",
+  "root_cause": "path does not exist",
+  "atlas_root_value": "/badpath",
+  "recommended_fix": "Set ATLAS_ROOT to existing atlas-radar root"
+}

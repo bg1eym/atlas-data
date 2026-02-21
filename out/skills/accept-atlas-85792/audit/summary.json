@@ -1,0 +1,64 @@
+{
+  "run_id": "accept-atlas-85792",
+  "started_at": "2026-02-19T14:33:50Z",
+  "verdict": "PASS",
+  "steps": [
+    {
+      "name": "capability_extract",
+      "status": "PASS",
+      "evidence_paths": [
+        "/Users/qiangguo/atlas-radar/out/skills/accept-atlas-85792/capabilities/atlas-fetch.json"
+      ],
+      "timestamp": "2026-02-19T14:33:50Z"
+    },
+    {
+      "name": "guard",
+      "status": "PASS",
+      "evidence_paths": [],
+      "timestamp": "2026-02-19T14:33:50Z"
+    },
+    {
+      "name": "install",
+      "status": "PASS",
+      "evidence_paths": [
+        "/Users/qiangguo/atlas-radar/out/skills/accept-atlas-85792/plan/plan.json"
+      ],
+      "timestamp": "2026-02-19T14:33:50Z"
+    },
+    {
+      "name": "load_runtime",
+      "status": "PASS",
+      "evidence_paths": [
+        "/Users/qiangguo/atlas-radar/runtime/skills/skills_enabled.json"
+      ],
+      "timestamp": "2026-02-19T14:33:50Z"
+    },
+    {
+      "name": "plan",
+      "status": "PASS",
+      "evidence_paths": [
+        "/Users/qiangguo/atlas-radar/out/skills/accept-atlas-85792/plan/plan.json"
+      ],
+      "timestamp": "2026-02-19T14:33:50Z"
+    },
+    {
+      "name": "security_review",
+      "status": "PASS",
+      "evidence_paths": [
+        "/Users/qiangguo/atlas-radar/out/skills/accept-atlas-85792/security/atlas-fetch_review.json"
+      ],
+      "timestamp": "2026-02-19T14:33:50Z"
+    },
+    {
+      "name": "verify",
+      "status": "PASS",
+      "evidence_paths": [
+        "/Users/qiangguo/atlas-radar/out/skills/accept-atlas-85792/verify/verify_report.json"
+      ],
+      "timestamp": "2026-02-19T14:33:50Z"
+    }
+  ],
+  "exit_code": 0,
+  "reason": "",
+  "finished_at": "2026-02-19T14:33:50Z"
+}

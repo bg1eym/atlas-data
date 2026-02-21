@@ -1,0 +1,52 @@
+{
+  "run_id": "accept-c-30000",
+  "started_at": "2026-02-19T07:00:56Z",
+  "verdict": "BLOCKED",
+  "steps": [
+    {
+      "name": "guard",
+      "status": "SKIPPED",
+      "evidence_paths": [],
+      "timestamp": "2026-02-19T07:00:56Z",
+      "reason": "not reached due to BLOCKED: forbidden env RADAR_MOCK is set"
+    },
+    {
+      "name": "security_review",
+      "status": "SKIPPED",
+      "evidence_paths": [],
+      "timestamp": "2026-02-19T07:00:57Z",
+      "reason": "not reached due to BLOCKED: forbidden env RADAR_MOCK is set"
+    },
+    {
+      "name": "capability_extract",
+      "status": "SKIPPED",
+      "evidence_paths": [],
+      "timestamp": "2026-02-19T07:00:57Z",
+      "reason": "not reached due to BLOCKED: forbidden env RADAR_MOCK is set"
+    },
+    {
+      "name": "plan",
+      "status": "SKIPPED",
+      "evidence_paths": [],
+      "timestamp": "2026-02-19T07:00:57Z",
+      "reason": "not reached due to BLOCKED: forbidden env RADAR_MOCK is set"
+    },
+    {
+      "name": "install",
+      "status": "SKIPPED",
+      "evidence_paths": [],
+      "timestamp": "2026-02-19T07:00:57Z",
+      "reason": "not reached due to BLOCKED: forbidden env RADAR_MOCK is set"
+    },
+    {
+      "name": "verify",
+      "status": "SKIPPED",
+      "evidence_paths": [],
+      "timestamp": "2026-02-19T07:00:57Z",
+      "reason": "not reached due to BLOCKED: forbidden env RADAR_MOCK is set"
+    }
+  ],
+  "exit_code": 42,
+  "reason": "forbidden env RADAR_MOCK is set",
+  "finished_at": "2026-02-19T07:00:57Z"
+}

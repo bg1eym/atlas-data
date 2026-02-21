@@ -1,0 +1,10 @@
+{
+  "request_sha256": "39d32a7de22edc886935ce974b378329ab81702caa9c6c14cd490a737673b102",
+  "extracted_intent": "from request.json",
+  "required_capabilities": [
+    "web.fetch"
+  ],
+  "forbidden_capabilities": [],
+  "required_credentials": [],
+  "constraints": {}
+}

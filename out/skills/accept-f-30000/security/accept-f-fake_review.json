@@ -1,0 +1,14 @@
+{
+  "skill_id": "accept-f-fake",
+  "source_ref": "atlas-radar/atlas-radar",
+  "pinned_revision": "HEAD",
+  "review_level": "L1",
+  "findings": [],
+  "verdict": "PASS",
+  "risk_flags": [
+    "shell_exec"
+  ],
+  "top_level_deps": 0,
+  "license_detected": "unknown",
+  "install_hooks_scan": "clean"
+}

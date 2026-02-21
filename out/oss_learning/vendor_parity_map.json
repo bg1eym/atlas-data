@@ -1,0 +1,92 @@
+{
+  "parity_dimensions": [
+    "Layout (first screen)",
+    "Information Architecture",
+    "Component style (cards, chips, panels)",
+    "Interaction (filters, tabs, drill-down)",
+    "Density control (paging, truncation, progressive disclosure)"
+  ],
+  "mapping": {
+    "Layout": {
+      "vendor_ref": "/Users/qiangguo/atlas-radar/vendor/situation-monitor/src/lib/components/layout/Dashboard.svelte",
+      "our_ref": "ui/atlas-viewer/src/Dashboard/DashboardView.svelte"
+    },
+    "(first": {
+      "vendor_ref": "/Users/qiangguo/atlas-radar/vendor/situation-monitor/src/lib/components/layout/Dashboard.svelte",
+      "our_ref": "ui/atlas-viewer/src/Dashboard/"
+    },
+    "screen)": {
+      "vendor_ref": "/Users/qiangguo/atlas-radar/vendor/situation-monitor/src/lib/components/layout/Dashboard.svelte",
+      "our_ref": "ui/atlas-viewer/src/Dashboard/"
+    },
+    "Information": {
+      "vendor_ref": "/Users/qiangguo/atlas-radar/vendor/situation-monitor/src/lib/components/layout/Dashboard.svelte",
+      "our_ref": "ui/atlas-viewer/src/Dashboard/"
+    },
+    "Architecture": {
+      "vendor_ref": "/Users/qiangguo/atlas-radar/vendor/situation-monitor/src/lib/components/layout/Dashboard.svelte",
+      "our_ref": "ui/atlas-viewer/src/Dashboard/"
+    },
+    "Component": {
+      "vendor_ref": "/Users/qiangguo/atlas-radar/vendor/situation-monitor/src/lib/components/layout/Dashboard.svelte",
+      "our_ref": "ui/atlas-viewer/src/Dashboard/"
+    },
+    "style": {
+      "vendor_ref": "/Users/qiangguo/atlas-radar/vendor/situation-monitor/src/lib/components/layout/Dashboard.svelte",
+      "our_ref": "ui/atlas-viewer/src/Dashboard/"
+    },
+    "(cards,": {
+      "vendor_ref": "/Users/qiangguo/atlas-radar/vendor/situation-monitor/src/lib/components/layout/Dashboard.svelte",
+      "our_ref": "ui/atlas-viewer/src/Dashboard/"
+    },
+    "chips,": {
+      "vendor_ref": "/Users/qiangguo/atlas-radar/vendor/situation-monitor/src/lib/components/layout/Dashboard.svelte",
+      "our_ref": "ui/atlas-viewer/src/Dashboard/"
+    },
+    "panels)": {
+      "vendor_ref": "/Users/qiangguo/atlas-radar/vendor/situation-monitor/src/lib/components/layout/Dashboard.svelte",
+      "our_ref": "ui/atlas-viewer/src/Dashboard/"
+    },
+    "Interaction": {
+      "vendor_ref": "/Users/qiangguo/atlas-radar/vendor/situation-monitor/src/lib/components/layout/Dashboard.svelte",
+      "our_ref": "ui/atlas-viewer/src/Dashboard/ItemsDrilldown.svelte"
+    },
+    "(filters,": {
+      "vendor_ref": "/Users/qiangguo/atlas-radar/vendor/situation-monitor/src/lib/components/layout/Dashboard.svelte",
+      "our_ref": "ui/atlas-viewer/src/Dashboard/"
+    },
+    "tabs,": {
+      "vendor_ref": "/Users/qiangguo/atlas-radar/vendor/situation-monitor/src/lib/components/layout/Dashboard.svelte",
+      "our_ref": "ui/atlas-viewer/src/Dashboard/"
+    },
+    "drill-down)": {
+      "vendor_ref": "/Users/qiangguo/atlas-radar/vendor/situation-monitor/src/lib/components/layout/Dashboard.svelte",
+      "our_ref": "ui/atlas-viewer/src/Dashboard/"
+    },
+    "Density": {
+      "vendor_ref": "/Users/qiangguo/atlas-radar/vendor/situation-monitor/src/lib/components/layout/Dashboard.svelte",
+      "our_ref": "ui/atlas-viewer/src/Dashboard/"
+    },
+    "control": {
+      "vendor_ref": "/Users/qiangguo/atlas-radar/vendor/situation-monitor/src/lib/components/layout/Dashboard.svelte",
+      "our_ref": "ui/atlas-viewer/src/Dashboard/"
+    },
+    "(paging,": {
+      "vendor_ref": "/Users/qiangguo/atlas-radar/vendor/situation-monitor/src/lib/components/layout/Dashboard.svelte",
+      "our_ref": "ui/atlas-viewer/src/Dashboard/"
+    },
+    "truncation,": {
+      "vendor_ref": "/Users/qiangguo/atlas-radar/vendor/situation-monitor/src/lib/components/layout/Dashboard.svelte",
+      "our_ref": "ui/atlas-viewer/src/Dashboard/"
+    },
+    "progressive": {
+      "vendor_ref": "/Users/qiangguo/atlas-radar/vendor/situation-monitor/src/lib/components/layout/Dashboard.svelte",
+      "our_ref": "ui/atlas-viewer/src/Dashboard/"
+    },
+    "disclosure)": {
+      "vendor_ref": "/Users/qiangguo/atlas-radar/vendor/situation-monitor/src/lib/components/layout/Dashboard.svelte",
+      "our_ref": "ui/atlas-viewer/src/Dashboard/"
+    }
+  },
+  "vendor_scan": "vendor_scan.json"
+}

@@ -1,0 +1,15 @@
+{
+  "run_id": "atlas-mlv93ak8-s6f15n",
+  "generated_at": "2026-02-20T18:56:28.149Z",
+  "item_count": 138,
+  "categories_count": 6,
+  "coverage": {
+    "overall_ok_rate": 0.3913,
+    "pipeline_verdict": "DEGRADED"
+  },
+  "dashboard_rel_path": "atlas-mlv93ak8-s6f15n",
+  "dashboard_url": "",
+  "cover_rel_path_or_url": null,
+  "cover_url": "",
+  "cover_missing": true
+}

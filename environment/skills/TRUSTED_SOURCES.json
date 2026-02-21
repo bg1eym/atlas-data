@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "version": "1.0",
+  "description": "唯一允许的 skills 聚合来源 allowlist。禁止从别处下载/复制安装脚本。",
+  "sources": [
+    {"id": "atlas-radar-internal", "kind": "github_repo", "locator": "atlas-radar/atlas-radar", "trust_level": "T0_OFFICIAL", "allow_actions": {"discover": true, "install": true}, "notes": "Atlas-Radar 内部 skills 目录（skills/）"},
+    {"id": "anthropic-skills", "kind": "github_repo", "locator": "anthropic/skills", "trust_level": "T0_OFFICIAL", "allow_actions": {"discover": true, "install": true}, "notes": "Anthropic 官方 skills 仓库"}
+  ]
+}

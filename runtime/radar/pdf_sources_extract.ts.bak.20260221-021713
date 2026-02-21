@@ -1,0 +1,451 @@
+#!/usr/bin/env node
+/**
+ * Input Pack extractor for Atlas.
+ * Supports: pdf/txt/md/yaml/yml/json
+ * Output: out/radar_sources/extracted_sources.json (canonical schema)
+ */
+
+import { readFileSync, writeFileSync, mkdirSync, existsSync } from "node:fs";
+import { resolve, dirname, extname, basename } from "node:path";
+import { fileURLToPath } from "node:url";
+import { RADAR_CATEGORIES } from "../atlas/taxonomy/radar_taxonomy.js";
+import type { RadarCategoryId } from "../atlas/taxonomy/radar_taxonomy.js";
+async function __unwrapToFunction(mod: any): Promise<any> {
+  let v: any = mod
+  for (let i = 0; i < 6; i++) {
+    if (!v) break
+    if (typeof v === "function") return v
+    if (typeof v.default !== "undefined") { v = v.default; continue }
+    break
+  }
+  return v
+}
+
+async function __pdfTextViaPdfJs(data: Uint8Array): Promise<string> {
+  const m: any = await import("pdfjs-dist/legacy/build/pdf.mjs")
+  const getDocument = m?.getDocument || m?.default?.getDocument
+  if (typeof getDocument !== "function") throw new Error("pdfjs-dist getDocument not found")
+  const doc = await getDocument({ data }).promise
+  let out = ""
+  for (let p = 1; p <= doc.numPages; p++) {
+    const page = await doc.getPage(p)
+    const tc = await page.getTextContent()
+    const items: any[] = (tc as any).items || []
+    const line = items.map((it: any) => (it?.str ?? "")).join("")
+    out += (p === 1 ? "" : "\n") + line
+  }
+  return out
+}
+
+const pdfParse: any = async (input: any) => {
+  const buf: any = Buffer.isBuffer(input) ? input : (input?.data && Buffer.isBuffer(input.data) ? input.data : Buffer.from(input))
+  const u8 = new Uint8Array(buf)
+  try {
+    const text = await __pdfTextViaPdfJs(u8)
+    return { text }
+  } catch (e) {
+    const m: any = await import("pdf-parse").catch(() => null)
+    const fn: any = await __unwrapToFunction(m)
+    if (typeof fn !== "function") throw e
+    const r = await fn(buf)
+    if (r && typeof r.text === "string") return r
+    return { text: String(r?.text ?? "") }
+  }
+}
+
+    continue
+  }
+  break
+}
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const ROOT = resolve(__dirname, "../..");
+const INPUT_PACK_REPO_DEFAULT = resolve(ROOT, "environment/input_pack");
+const SOURCES_BASENAME = "ai_radar_sources";
+const KOLS_BASENAME = "ai_kols";
+const INPUT_EXTENSIONS = [".pdf", ".txt", ".md", ".yaml", ".yml", ".json"];
+const OUT_DIR = resolve(ROOT, "out/radar_sources");
+const OUT_FILE = resolve(OUT_DIR, "extracted_sources.json");
+const SCHEMA_FILE = resolve(ROOT, "environment/schemas/extracted_sources.schema.json");
+
+export type SourceKind = "news" | "community" | "report" | "official" | "kol";
+export type AdapterType = "rss" | "html" | "github" | "x";
+
+export interface RadarCategoryDef {
+  id: RadarCategoryId;
+  name_zh: string;
+  name_en: string;
+  keywords: string[];
+  negative_keywords: string[];
+  notes: string;
+}
+export interface ExtractedSource {
+  source_id: string;
+  name: string;
+  kind: SourceKind;
+  adapter: AdapterType;
+  url: string;
+  category_id: RadarCategoryId;
+  weight: number;
+  notes?: string;
+  selectors?: string[];
+  headers?: Record<string, string>;
+  rate_limit?: { rps?: number; burst?: number };
+  allow_domains?: string[];
+  deny_domains?: string[];
+}
+export interface ExtractedKol {
+  kol_id: string;
+  name: string;
+  platform: string;
+  handle_or_url: string;
+  kind: "kol";
+  adapter: "x" | "rss" | "html";
+  category_id: RadarCategoryId;
+  weight: number;
+}
+export interface ExtractedSourcesJson {
+  radar_categories: RadarCategoryDef[];
+  sources: ExtractedSource[];
+  kols: ExtractedKol[];
+  _meta: {
+    generated_at: string;
+    inputs: string[];
+    parser: string;
+  };
+}
+const CATEGORY_DEFS: RadarCategoryDef[] = [
+  { id: "tech_breakthrough", name_zh: "技术突破", name_en: "Tech Breakthrough", keywords: ["模型", "benchmark", "SOTA", "release", "inference"], negative_keywords: [], notes: "" },
+  { id: "social_phenomenon", name_zh: "社会现象", name_en: "Social Phenomenon", keywords: ["adoption", "就业", "education", "usage"], negative_keywords: [], notes: "" },
+  { id: "finance_capital", name_zh: "金融与资本", name_en: "Finance & Capital", keywords: ["funding", "IPO", "investment", "估值"], negative_keywords: [], notes: "" },
+  { id: "policy_governance", name_zh: "政策与治理", name_en: "Policy & Governance", keywords: ["policy", "regulation", "AI Act", "监管"], negative_keywords: [], notes: "" },
+  { id: "safety_incident", name_zh: "安全事故", name_en: "Safety & Incident", keywords: ["safety", "breach", "vulnerability", "风险"], negative_keywords: [], notes: "" },
+  { id: "energy_environment", name_zh: "能源环境", name_en: "Energy & Environment", keywords: ["energy", "datacenter", "emission", "碳"], negative_keywords: [], notes: "" },
+];
+
+function buildBlockedAudit(reason: string): void {
+  const runId = `blocked-input-pack-${Date.now().toString(36)}`;
+  const auditDir = resolve(ROOT, "out/atlas", runId, "audit");
+  mkdirSync(auditDir, { recursive: true });
+  writeFileSync(
+    resolve(auditDir, "summary.json"),
+    JSON.stringify(
+      {
+        verdict: "BLOCKED",
+        exit_code: 42,
+        reason,
+        mode: "INPUT_PACK",
+        finished_at: new Date().toISOString(),
+      },
+      null,
+      2,
+    ),
+    "utf-8",
+  );
+}
+function blocked(reason: string): never {
+  buildBlockedAudit(reason);
+  console.error(`BLOCKED: ${reason}`);
+  process.exit(42);
+}
+function normalizeId(s: string): string {
+  return s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 56);
+}
+function detectAdapter(url: string): AdapterType {
+  const u = url.toLowerCase();
+  if (u.includes("github.com")) return "github";
+  if (u.includes("x.com/") || u.includes("twitter.com/")) return "x";
+  if (u.includes("/feed") || u.endsWith(".xml") || u.endsWith(".rss") || u.includes("atom")) return "rss";
+  return "html";
+}
+function inferKind(url: string): SourceKind {
+  const u = url.toLowerCase();
+  if (u.includes("openai.com") || u.includes("anthropic.com") || u.includes("deepmind.google")) return "official";
+  if (u.includes("substack.com") || u.includes("x.com/") || u.includes("twitter.com/")) return "kol";
+  if (u.includes("hai.stanford") || u.includes("ieee.org") || u.includes("brookings")) return "report";
+  if (u.includes("reddit.com") || u.includes("ycombinator.com")) return "community";
+  return "news";
+}
+function inferCategoryByContext(text: string): RadarCategoryId {
+  const t = text.toLowerCase();
+  if (t.includes("policy") || t.includes("治理") || t.includes("监管")) return "policy_governance";
+  if (t.includes("finance") || t.includes("capital") || t.includes("融资") || t.includes("投资")) return "finance_capital";
+  if (t.includes("safety") || t.includes("安全") || t.includes("incident") || t.includes("漏洞")) return "safety_incident";
+  if (t.includes("energy") || t.includes("环境") || t.includes("碳") || t.includes("电力")) return "energy_environment";
+  if (t.includes("social") || t.includes("社会") || t.includes("adoption") || t.includes("就业")) return "social_phenomenon";
+  return "tech_breakthrough";
+}
+function fallbackPack(parser: string, inputs: string[]): ExtractedSourcesJson {
+  const fixed: Array<Omit<ExtractedSource, "source_id">> = [
+    { name: "OpenAI Blog", kind: "official", adapter: "rss", url: "https://openai.com/blog/rss.xml", category_id: "tech_breakthrough", weight: 95 },
+    { name: "DeepMind Blog", kind: "official", adapter: "rss", url: "https://deepmind.google/discover/blog/rss.xml", category_id: "tech_breakthrough", weight: 92 },
+    { name: "Reuters Tech", kind: "news", adapter: "rss", url: "https://www.reuters.com/technology/rss", category_id: "tech_breakthrough", weight: 90 },
+    { name: "TechCrunch", kind: "news", adapter: "rss", url: "https://techcrunch.com/feed/", category_id: "social_phenomenon", weight: 86 },
+    { name: "HN Front", kind: "community", adapter: "rss", url: "https://news.ycombinator.com/rss", category_id: "social_phenomenon", weight: 82 },
+    { name: "Reddit ML", kind: "community", adapter: "rss", url: "https://www.reddit.com/r/MachineLearning/.rss", category_id: "social_phenomenon", weight: 80 },
+    { name: "Reuters Business", kind: "news", adapter: "rss", url: "https://www.reuters.com/business/rss", category_id: "finance_capital", weight: 85 },
+    { name: "VentureBeat AI", kind: "news", adapter: "rss", url: "https://venturebeat.com/category/ai/feed/", category_id: "finance_capital", weight: 82 },
+    { name: "The Information", kind: "report", adapter: "html", url: "https://www.theinformation.com", category_id: "finance_capital", weight: 78, selectors: ["article a", "main a"] },
+    { name: "Anthropic News", kind: "official", adapter: "html", url: "https://www.anthropic.com/news", category_id: "policy_governance", weight: 88, selectors: ["article a", "main a"] },
+    { name: "EU Commission", kind: "official", adapter: "rss", url: "https://ec.europa.eu/commission/presscorner/rss/en", category_id: "policy_governance", weight: 84 },
+    { name: "Stanford HAI", kind: "report", adapter: "rss", url: "https://hai.stanford.edu/news/feed", category_id: "policy_governance", weight: 84 },
+    { name: "Ars Technica", kind: "news", adapter: "rss", url: "https://feeds.arstechnica.com/arstechnica/index", category_id: "safety_incident", weight: 80 },
+    { name: "Krebs on Security", kind: "report", adapter: "rss", url: "https://krebsonsecurity.com/feed/", category_id: "safety_incident", weight: 79 },
+    { name: "Reuters Cybersecurity", kind: "news", adapter: "rss", url: "https://www.reuters.com/technology/cybersecurity/rss", category_id: "safety_incident", weight: 78 },
+    { name: "Datacenter Dynamics", kind: "news", adapter: "rss", url: "https://www.datacenterdynamics.com/en/feed/", category_id: "energy_environment", weight: 78 },
+    { name: "Reuters Commodities", kind: "news", adapter: "rss", url: "https://www.reuters.com/markets/commodities/rss", category_id: "energy_environment", weight: 77 },
+    { name: "IEEE Spectrum", kind: "report", adapter: "rss", url: "https://spectrum.ieee.org/feeds/feed.rss", category_id: "energy_environment", weight: 76 }
+  ];
+  const sources: ExtractedSource[] = fixed.map((s, idx) => ({
+    source_id: `${normalizeId(s.name)}-${idx + 1}`,
+    ...s,
+  }));
+  const kols: ExtractedKol[] = [
+    { kol_id: "andrew-ng", name: "Andrew Ng", platform: "x", handle_or_url: "https://x.com/AndrewYNg", kind: "kol", adapter: "x", category_id: "tech_breakthrough", weight: 80 },
+    { kol_id: "yann-lecun", name: "Yann LeCun", platform: "x", handle_or_url: "https://x.com/ylecun", kind: "kol", adapter: "x", category_id: "tech_breakthrough", weight: 80 },
+    { kol_id: "ethan-mollick", name: "Ethan Mollick", platform: "substack", handle_or_url: "https://oneusefulthing.substack.com", kind: "kol", adapter: "rss", category_id: "social_phenomenon", weight: 79 },
+    { kol_id: "gary-marcus", name: "Gary Marcus", platform: "substack", handle_or_url: "https://garymarcus.substack.com", kind: "kol", adapter: "rss", category_id: "policy_governance", weight: 76 },
+  ];
+  return {
+    radar_categories: CATEGORY_DEFS,
+    sources,
+    kols,
+    _meta: { generated_at: new Date().toISOString(), inputs, parser },
+  };
+}
+function resolveInputPackDir(): string {
+  const envDir = process.env.INPUT_PACK_DIR?.trim();
+  if (envDir) return resolve(envDir);
+  return INPUT_PACK_REPO_DEFAULT;
+}
+function findInputFiles(dir: string): string[] {
+  const paths: string[] = [];
+  for (const base of [SOURCES_BASENAME, KOLS_BASENAME]) {
+    for (const ext of INPUT_EXTENSIONS) {
+      const p = resolve(dir, base + ext);
+      if (existsSync(p)) {
+        paths.push(p);
+        break;
+}
+}
+}
+  return paths;
+}
+function getExpectedPaths(dir: string): string[] {
+  return [resolve(dir, `${SOURCES_BASENAME}.(pdf|txt|md|yaml|json)`), resolve(dir, `${KOLS_BASENAME}.(pdf|txt|md|yaml|json)`)];
+}
+function getInputPaths(): string[] {
+  const envPaths = process.env.RADAR_INPUT_PACK_PATHS?.trim();
+  if (envPaths) {
+    return envPaths
+      .split(";")
+      .map((s) => s.trim())
+      .filter(Boolean);
+}
+  const packDir = resolveInputPackDir();
+  const found = findInputFiles(packDir);
+  if (found.length > 0) return found;
+  return [];
+}
+function mergeStructured(base: ExtractedSourcesJson, incoming: Partial<ExtractedSourcesJson>): ExtractedSourcesJson {
+  const mapSources = new Map<string, ExtractedSource>();
+  for (const s of base.sources) mapSources.set(`${s.name}:${s.url}`, s);
+  for (const raw of incoming.sources ?? []) {
+    const s = raw as Partial<ExtractedSource>;
+    if (!s.url || !s.name) continue;
+    const adapter = (s.adapter ?? detectAdapter(s.url)) as AdapterType;
+    const kind = (s.kind ?? inferKind(s.url)) as SourceKind;
+    const category = (s.category_id ?? inferCategoryByContext(`${s.name} ${s.notes ?? ""}`)) as RadarCategoryId;
+    const source: ExtractedSource = {
+      source_id: s.source_id || normalizeId(`${s.name}-${category}`),
+      name: s.name,
+      kind,
+      adapter,
+      url: s.url,
+      category_id: category,
+      weight: Number.isFinite(s.weight) ? Number(s.weight) : 60,
+      notes: s.notes ?? "",
+      selectors: Array.isArray(s.selectors) ? s.selectors : undefined,
+      headers: s.headers ?? undefined,
+      rate_limit: s.rate_limit ?? undefined,
+      allow_domains: s.allow_domains ?? undefined,
+      deny_domains: s.deny_domains ?? undefined,
+    };
+    mapSources.set(`${source.name}:${source.url}`, source);
+}
+  const mapKols = new Map<string, ExtractedKol>();
+  for (const k of base.kols) mapKols.set(k.kol_id, k);
+  for (const raw of incoming.kols ?? []) {
+    const k = raw as Partial<ExtractedKol>;
+    if (!k.name || !k.handle_or_url) continue;
+    const adapter = (k.adapter ?? detectAdapter(k.handle_or_url)) as "x" | "rss" | "html";
+    const category = (k.category_id ?? inferCategoryByContext(k.name)) as RadarCategoryId;
+    const kol: ExtractedKol = {
+      kol_id: k.kol_id || normalizeId(k.name),
+      name: k.name,
+      platform: k.platform ?? (adapter === "x" ? "x" : "web"),
+      handle_or_url: k.handle_or_url,
+      kind: "kol",
+      adapter,
+      category_id: category,
+      weight: Number.isFinite(k.weight) ? Number(k.weight) : 70,
+    };
+    mapKols.set(kol.kol_id, kol);
+}
+  return {
+    radar_categories: incoming.radar_categories?.length
+      ? (incoming.radar_categories as RadarCategoryDef[])
+      : base.radar_categories,
+    sources: Array.from(mapSources.values()),
+    kols: Array.from(mapKols.values()),
+    _meta: base._meta,
+  };
+}
+async function readPdfText(path: string): Promise<string> {
+  const data = readFileSync(path);
+  const out = await pdfParse(data);
+  return out.text ?? "";
+}
+async function parseStructuredFile(path: string): Promise<Partial<ExtractedSourcesJson>> {
+  const ext = extname(path).toLowerCase();
+  const raw = readFileSync(path, "utf-8");
+  if (ext === ".json") return JSON.parse(raw);
+  if (ext === ".yaml" || ext === ".yml") {
+    const yaml = await import("yaml");
+    return yaml.parse(raw);
+}
+  return {};
+}
+function extractHeuristicFromText(path: string, text: string): Partial<ExtractedSourcesJson> {
+  const urls = Array.from(new Set((text.match(/https?:\/\/[^\s)>\]]+/g) ?? []).map((u) => u.trim())));
+  const sources: ExtractedSource[] = [];
+  const kols: ExtractedKol[] = [];
+  for (const url of urls) {
+    const adapter = detectAdapter(url);
+    const kind = inferKind(url);
+    const category = inferCategoryByContext(text);
+    const name = new URL(url).hostname.replace(/^www\./, "");
+    if (adapter === "x" || kind === "kol") {
+      kols.push({
+        kol_id: normalizeId(name),
+        name,
+        platform: adapter === "x" ? "x" : "web",
+        handle_or_url: url,
+        kind: "kol",
+        adapter: adapter === "x" ? "x" : "rss",
+        category_id: category,
+        weight: 70,
+      });
+    } else {
+      sources.push({
+        source_id: normalizeId(`${name}-${category}`),
+        name,
+        kind,
+        adapter,
+        url,
+        category_id: category,
+        weight: kind === "official" ? 90 : 70,
+        notes: `heuristic_from_${basename(path)}`,
+      });
+}
+}
+  return { sources, kols };
+}
+function validateExtracted(result: ExtractedSourcesJson): void {
+  if (!existsSync(SCHEMA_FILE)) {
+    blocked(`missing_schema:${SCHEMA_FILE}`);
+}
+  if (!Array.isArray(result.radar_categories) || result.radar_categories.length !== RADAR_CATEGORIES.length) {
+    blocked("invalid_extracted_sources:radar_categories");
+}
+  if (!Array.isArray(result.sources) || result.sources.length === 0) {
+    blocked("invalid_extracted_sources:sources_empty");
+}
+  for (const s of result.sources) {
+    if (!s.source_id || !s.name || !s.url || !s.category_id || !s.adapter || !s.kind) {
+      blocked("invalid_extracted_sources:source_missing_required_fields");
+}
+    if (!/^https:\/\//.test(s.url)) {
+      blocked(`invalid_source_url:${s.url}`);
+}
+}
+  if (!Array.isArray(result.kols)) {
+    blocked("invalid_extracted_sources:kols_not_array");
+}
+}
+async function extractFromInputPack(paths: string[]): Promise<ExtractedSourcesJson> {
+  const allowFallback = process.env.PDF_EXTRACT_ALLOW_FALLBACK === "1";
+  const packDir = resolveInputPackDir();
+  const expectedPaths = getExpectedPaths(packDir).join(",");
+
+  if (paths.length === 0) {
+    if (!allowFallback) {
+      blocked(`missing_input_pack:${expectedPaths}`);
+}
+    return fallbackPack("fallback_missing_input_pack", []);
+}
+  const missing = paths.filter((p) => !existsSync(p));
+  if (missing.length > 0) {
+    if (!allowFallback) {
+      blocked(`missing_input_pack:${missing.join(",")}`);
+}
+    return fallbackPack("fallback_missing_input_pack", paths);
+}
+  let merged = fallbackPack("input_pack", paths);
+  merged.sources = [];
+  merged.kols = [];
+
+  for (const path of paths) {
+    try {
+      const ext = extname(path).toLowerCase();
+      if (ext === ".json" || ext === ".yaml" || ext === ".yml") {
+        const structured = await parseStructuredFile(path);
+        merged = mergeStructured(merged, structured);
+        continue;
+}
+      if (ext === ".txt" || ext === ".md") {
+        const text = readFileSync(path, "utf-8");
+        merged = mergeStructured(merged, extractHeuristicFromText(path, text));
+        continue;
+}
+      if (ext === ".pdf") {
+        const text = await readPdfText(path);
+        merged = mergeStructured(merged, extractHeuristicFromText(path, text));
+        continue;
+}
+      blocked(`unsupported_input_pack_extension:${ext || "unknown"}`);
+    } catch (err) {
+      if (!allowFallback) {
+        blocked(`input_pack_parse_failed:${path}:${String(err)}`);
+}
+      return fallbackPack("fallback_parse_error", paths);
+}
+}
+  if (merged.sources.length === 0 && merged.kols.length === 0) {
+    if (!allowFallback) {
+      blocked("input_pack_empty_extraction");
+}
+    return fallbackPack("fallback_empty_extraction", paths);
+}
+  merged._meta = {
+    generated_at: new Date().toISOString(),
+    inputs: paths,
+    parser: "input_pack_v1",
+  };
+  return merged;
+}
+async function main(): Promise<void> {
+  mkdirSync(OUT_DIR, { recursive: true });
+  const paths = getInputPaths();
+  const result = await extractFromInputPack(paths);
+  validateExtracted(result);
+  writeFileSync(OUT_FILE, JSON.stringify(result, null, 2), "utf-8");
+  console.log(`extracted_sources.json written to ${OUT_FILE}`);
+  console.log(`  radar_categories: ${result.radar_categories.length}`);
+  console.log(`  sources: ${result.sources.length}`);
+  console.log(`  kols: ${result.kols.length}`);
+  console.log(`  parser: ${result._meta.parser}`);
+}
+main().catch((err) => {
+  blocked(`input_pack_unhandled_error:${String(err)}`);
+});

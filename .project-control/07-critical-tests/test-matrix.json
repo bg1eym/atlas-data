@@ -1,0 +1,80 @@
+{
+  "schema_version": "actf-1",
+  "checks": [
+    {
+      "id": "CT-001",
+      "name": "Structural guard",
+      "type": "structural",
+      "inputs": {
+        "env_keys": [
+          "ACTF_REQUIRED_ENV_KEYS"
+        ],
+        "root_dir": "ACTF_ROOT_DIR"
+      },
+      "expected_evidence": [
+        "structural-evidence.json"
+      ]
+    },
+    {
+      "id": "CT-002",
+      "name": "Execution simulation",
+      "type": "execution",
+      "inputs": {
+        "sim_path": "ACTF_SIM_PATH",
+        "node_bin": "ACTF_NODE_BIN",
+        "cmd": "ACTF_CMD"
+      },
+      "expected_evidence": [
+        "execution-evidence.json"
+      ]
+    },
+    {
+      "id": "CT-003",
+      "name": "Failure classification",
+      "type": "structural",
+      "inputs": {},
+      "expected_evidence": [
+        "classification.json"
+      ]
+    },
+    {
+      "id": "CT-ATLAS-001",
+      "name": "Atlas result guard",
+      "type": "execution",
+      "inputs": {
+        "required_env_keys": [
+          "ATLAS_ROOT",
+          "ATLAS_DASHBOARD_URL_BASE",
+          "ATLAS_COVER_URL_BASE"
+        ],
+        "actf_cmd": "node+pnpm.cjs atlas:run"
+      },
+      "expected_evidence": [
+        "atlas-result-evidence.json"
+      ]
+    },
+    {
+      "id": "CT-ATLAS-008",
+      "name": "Run today local",
+      "type": "execution",
+      "inputs": {
+        "required_env_keys": [
+          "ATLAS_ROOT"
+        ],
+        "adapter_simulate": "atlas-today-simulate"
+      },
+      "expected_evidence": [
+        "ct-atlas-008-evidence.json"
+      ]
+    },
+    {
+      "id": "CT-ATLAS-ENV-001",
+      "name": "Gateway ATLAS_ROOT audit",
+      "type": "execution",
+      "inputs": {},
+      "expected_evidence": [
+        "atlas-env-audit.json"
+      ]
+    }
+  ]
+}

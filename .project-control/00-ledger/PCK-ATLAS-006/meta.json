@@ -1,0 +1,10 @@
+{
+  "task_id": "PCK-ATLAS-006",
+  "base_version": "PCK-ATLAS-FINAL-001",
+  "inherits_failure_mode": "OK",
+  "declared_fix_target": "ATLAS_ROOT_INVALID + SPAWN_NODE_ENOENT: process.execPath fallback, ATLAS_ROOT validation before spawn, SPAWN_FAILED_ENOENT classification with evidence",
+  "verification_strategy": "RG-ATLAS-005-*, tools/atlas-acceptance-ATLAS-005.sh, tools/atlas-root-discovery.sh",
+  "intent": "Fix spawn node ENOENT + ATLAS_ROOT invalid — evidence-based, without breaking PCK",
+  "structural_scope": ["atlas:executor-fix", "diagnostics:add", "regression:add"],
+  "timestamp": "2026-02-20T14:00:00.000Z"
+}
